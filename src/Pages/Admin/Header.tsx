@@ -1,19 +1,14 @@
 import {
-  Avatar,
-  Box,
   Button,
-  Center,
   Flex,
   Text,
-  Image,
-  Heading,
   Menu,
   MenuButton,
   IconButton,
   MenuList,
   MenuItem,
 } from "@chakra-ui/react";
-import logo from "../../assets/logo.png";
+
 import { AddIcon, HamburgerIcon } from "@chakra-ui/icons";
 const AdminHeader = () => {
   return (

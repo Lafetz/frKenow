@@ -1,4 +1,4 @@
-import { Box, Image, Stack } from "@chakra-ui/react";
+import { Image, Stack } from "@chakra-ui/react";
 import banner1 from "../../assets/banner1.png";
 import banner2 from "../../assets/banner2.png";
 export const Banner = () => {

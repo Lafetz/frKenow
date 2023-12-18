@@ -1,17 +1,13 @@
 import {
-  Button,
   Card,
   CardBody,
-  CardFooter,
   CardHeader,
   Flex,
-  Text,
-  Heading,
-  SimpleGrid,
   Stat,
   StatLabel,
   StatNumber,
   StatHelpText,
+  Heading,
 } from "@chakra-ui/react";
 import AdminHeader from "./Header";
 const Reports = () => {

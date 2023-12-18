@@ -13,9 +13,9 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import AdminHeader from "./Header";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
-import { AckEvent, GameStatus } from "../../utils/types/socketEvents";
+import { AckEvent } from "../../utils/types/socketEvents";
 import CurrentGame from "./currentGame";
 
 const NewGame = () => {

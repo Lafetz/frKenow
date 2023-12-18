@@ -1,4 +1,4 @@
-import { Text, Flex, Progress, useToast, Spinner } from "@chakra-ui/react";
+import { Flex, useToast, Spinner } from "@chakra-ui/react";
 import { Game } from "./Game";
 
 import Winners from "./Winners";

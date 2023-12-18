@@ -1,4 +1,4 @@
-import { Flex, Heading, Spinner } from "@chakra-ui/react";
+import { Flex, Heading } from "@chakra-ui/react";
 import { useContext, useEffect, useState } from "react";
 import { GameStatus } from "../../utils/types/socketEvents";
 import { SocketContext } from "../Context/socketContext";

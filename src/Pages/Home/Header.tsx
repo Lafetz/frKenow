@@ -1,13 +1,9 @@
 import {
   Avatar,
-  Box,
-  Button,
-  Center,
   Flex,
   Text,
   Image,
   Heading,
-  useToast,
   Spinner,
   Menu,
   MenuButton,
@@ -16,13 +12,10 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
-import { useContext, useEffect, useState } from "react";
-import { SocketContext } from "../Context/socketContext";
-import { User } from "../../utils/types/data";
-import { AckEvent } from "../../utils/types/socketEvents";
+
 import Withdraw from "./buttons/withdraw";
 import Deposit from "./buttons/deposit";
-import { AddIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
 type Props = {
   user: any;
 };

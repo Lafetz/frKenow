@@ -1,9 +1,9 @@
 {
   "name": "frontend",
   "private": true,
+  "homepage": "http://lafetz.github.io/frKenow",
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://lafetz.github.io/ludoFront",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",

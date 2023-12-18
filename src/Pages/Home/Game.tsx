@@ -1,19 +1,19 @@
 import { useContext, useEffect, useState } from "react";
 import { Ball } from "../../utils/types/Game";
-import { Flex, Heading, Text, Wrap, useToast } from "@chakra-ui/react";
+import { Flex, Text, Wrap, useToast } from "@chakra-ui/react";
 import { BallComponent } from "./Ball";
 import { SocketContext } from "../Context/socketContext";
 
-import { AckEvent, GameStatus } from "../../utils/types/socketEvents";
+import { GameStatus } from "../../utils/types/socketEvents";
 import { fillBalls } from "../../utils/game/helpers";
 import { EndPopup } from "./EndPopup";
-import { User } from "../../utils/types/data";
+
 import GameS from "./Gamestatus";
 type Props = {
   user: any;
   setUser: any;
 };
-export const Game = ({ user, setUser }: Props) => {
+export const Game = ({ user }: Props) => {
   console.log(user);
   const { socket } = useContext(SocketContext);
   const toast = useToast();
