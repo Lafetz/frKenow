@@ -57,11 +57,11 @@ const Header = ({ user }: Props) => {
             gap={[3, 1]}
             fontSize={["sm", "md", "lg", "xl"]}
           >
-            <Text lineHeight="1rem" height="max-content" as="b">
+            <Text height="max-content" as="b">
               {user.credit}
             </Text>
 
-            <Text lineHeight="1rem" height="max-content" as="b">
+            <Text height="max-content" as="b">
               @{user.username}
             </Text>
           </Flex>
