@@ -13,8 +13,7 @@ type Props = {
   user: any;
   setUser: any;
 };
-export const Game = ({ user }: Props) => {
-  console.log(user);
+export const Game = ({ user, setUser }: Props) => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const [balls, setBalls] = useState<Ball[]>([]);
@@ -56,6 +55,10 @@ export const Game = ({ user }: Props) => {
     };
     const onGameStatus = (gameStatus: GameStatus) => {
       setStatus(gameStatus);
+      if (!gameStatus.started) {
+        setBalls(fillBalls());
+        setUserBalls([]);
+      }
     };
     socket.on("game_status", onGameStatus);
     socket.on("bet", onBet);
@@ -83,17 +86,12 @@ export const Game = ({ user }: Props) => {
           </Text>
         </Flex>
       )}
-      {/* <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
-        <Heading as="h1" size="2xl" noOfLines={1}>
-          BET 200
-        </Heading>
-        <Heading as="h2" size="lg" noOfLines={1}>
-          MAX PAYOUT 6000 ETB
-        </Heading>maxW="580px"
-      </Flex> */}
-      <Wrap w={[350, 580]}>
+
+      <Wrap w={[275, 580]}>
         {balls.map((b, i) => {
-          return <BallComponent key={i} ball={b}></BallComponent>;
+          return (
+            <BallComponent setUser={setUser} key={i} ball={b}></BallComponent>
+          );
         })}
       </Wrap>
       <>
@@ -110,13 +108,19 @@ export const Game = ({ user }: Props) => {
         {userBalls.length > 0 && (
           <Wrap maxW="350px">
             {userBalls.map((b, i) => {
-              return <BallComponent key={i} ball={b}></BallComponent>;
+              return (
+                <BallComponent
+                  setUser={setUser}
+                  key={i}
+                  ball={b}
+                ></BallComponent>
+              );
             })}
           </Wrap>
         )}
       </>
 
-      <EndPopup />
+      <EndPopup setUser={setUser} />
     </Flex>
   );
 };

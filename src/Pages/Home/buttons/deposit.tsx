@@ -1,5 +1,6 @@
 import {
   Button,
+  MenuItem,
   Modal,
   ModalBody,
   ModalContent,
@@ -12,9 +13,10 @@ const Deposit = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button size="md" bg="#4f0321" color="white" onClick={onOpen}>
+      <MenuItem onClick={onOpen}>Deposit</MenuItem>
+      {/* <Button size="md" bg="#4f0321" color="white" onClick={onOpen}>
         Deposit
-      </Button>
+      </Button> */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

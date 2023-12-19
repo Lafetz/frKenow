@@ -2,6 +2,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  MenuItem,
   Modal,
   ModalBody,
   ModalContent,
@@ -61,9 +62,10 @@ const Withdraw = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <Button size="md" bg="#4f0321" color="white" onClick={onOpen}>
+      <MenuItem onClick={onOpen}>Withdraw</MenuItem>
+      {/* <Button size="md" bg="#4f0321" color="white" onClick={onOpen}>
         Withdraw
-      </Button>
+      </Button> */}
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

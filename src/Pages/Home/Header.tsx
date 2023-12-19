@@ -12,10 +12,11 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
-
+import src from "../../assets/5.jpg";
 import Withdraw from "./buttons/withdraw";
 import Deposit from "./buttons/deposit";
 import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 type Props = {
   user: any;
 };
@@ -30,12 +31,14 @@ const Header = ({ user }: Props) => {
       fontSize="larger"
     >
       <Flex alignItems="center" gap="5px">
-        <Image
-          boxSize="50px"
-          objectFit="cover"
-          src={logo}
-          alt="jackpot banner"
-        />
+        <Link to="/">
+          <Image
+            boxSize="50px"
+            objectFit="cover"
+            src={logo}
+            alt="jackpot banner"
+          />{" "}
+        </Link>
         <Heading
           as="h1"
           fontWeight="bold"
@@ -54,7 +57,6 @@ const Header = ({ user }: Props) => {
             justifyContent="center"
             alignItems="center"
             color="#4f0321"
-            gap={[3, 1]}
             fontSize={["sm", "md", "lg", "xl"]}
           >
             <Text height="max-content" as="b">
@@ -66,11 +68,7 @@ const Header = ({ user }: Props) => {
             </Text>
           </Flex>
         )}
-        <Avatar
-          size={["sm", "md"]}
-          name="Kola Tioluwani"
-          src="https://bit.ly/tioluwani-kolawole"
-        />
+        <Avatar size={["sm", "md"]} name="Kola Tioluwani" src={src} />
         <Menu>
           <MenuButton
             as={IconButton}
@@ -79,11 +77,10 @@ const Header = ({ user }: Props) => {
             variant="outline"
           />
           <MenuList>
+            <Deposit />
+            <Withdraw />
             <MenuItem>
-              <Deposit />
-            </MenuItem>
-            <MenuItem>
-              <Withdraw />
+              <Link to="/transactions">Transactions</Link>
             </MenuItem>
           </MenuList>
         </Menu>

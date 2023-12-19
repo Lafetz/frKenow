@@ -1,7 +1,29 @@
-import { Flex, Icon, Text } from "@chakra-ui/react";
+import { Flex, Image, Text, useToast } from "@chakra-ui/react";
 import Winner from "./Winner";
-
+import { useContext, useEffect, useState } from "react";
+import { SocketContext } from "../Context/socketContext";
+import { Report } from "../../utils/types/data";
+import { AckEvent } from "../../utils/types/socketEvents";
+import src from "../../assets/moneyIcon.png";
 const Winners = () => {
+  const { socket } = useContext(SocketContext);
+  const toast = useToast();
+  const [winners, setWinners] = useState<Report[]>();
+  useEffect(() => {
+    socket.emit("winners", (res: AckEvent) => {
+      if (res.code == 200) {
+        setWinners(res.payload);
+      } else {
+        toast({
+          title: "server error",
+          description: "unable to connect to server",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    });
+  }, []);
   return (
     <Flex alignItems="center" flexDir="column" gap="5px">
       <Flex
@@ -16,12 +38,22 @@ const Winners = () => {
         <Text color="#1e3f2e" fontSize="x-large" as="b">
           WINNERS
         </Text>
-        <Icon />
+        <Image height="30px" src={src} />
       </Flex>
       <Flex gap="5px" bg="#fef79d" flexDir="column" padding="10px">
-        {[0, 1, 2, , 7, 8, 9, 5].map((x) => (
-          <Winner key={x} />
-        ))}
+        {winners?.map((x, i) =>
+          //@ts-ignore
+          x.winners.map((r, k) => {
+            return (
+              <Winner
+                key={`${i}${k}`}
+                reports={winners}
+                reportsI={i}
+                reportI={k}
+              />
+            );
+          })
+        )}
       </Flex>
     </Flex>
   );

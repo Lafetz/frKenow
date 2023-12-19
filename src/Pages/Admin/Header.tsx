@@ -9,7 +9,8 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 
-import { AddIcon, HamburgerIcon } from "@chakra-ui/icons";
+import { HamburgerIcon } from "@chakra-ui/icons";
+import { Link } from "react-router-dom";
 const AdminHeader = () => {
   return (
     <Flex
@@ -27,10 +28,14 @@ const AdminHeader = () => {
           variant="outline"
         />
         <MenuList>
-          <MenuItem command="⌘T">Reports</MenuItem>
-          <MenuItem command="⌘T">Setting</MenuItem>
-          <MenuItem icon={<AddIcon />} command="⌘T">
-            New Tab
+          <MenuItem>
+            <Link to={"/admin/reports"}>Reports</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/admin/new"}>New Game</Link>
+          </MenuItem>
+          <MenuItem>
+            <Link to={"/admin/requests"}>Requests</Link>
           </MenuItem>
         </MenuList>
       </Menu>

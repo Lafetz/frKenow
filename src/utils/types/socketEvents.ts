@@ -12,4 +12,7 @@ export type GameStatus = {
   minBet: number;
   started: boolean;
   balls: Ball[];
+  first: number;
+  second: number;
+  third: number;
 };

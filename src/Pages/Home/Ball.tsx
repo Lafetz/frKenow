@@ -19,14 +19,17 @@ import { AckEvent } from "../../utils/types/socketEvents";
 
 type Props = {
   ball: Ball;
+  setUser: any;
 };
-export const BallComponent = ({ ball }: Props) => {
+export const BallComponent = ({ ball, setUser }: Props) => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const { isOpen, onOpen, onClose } = useDisclosure();
   const placeBet = () => {
     socket.emit("bet", ball.number, (res: AckEvent) => {
       if (res.code == 200) {
+        console.log(res);
+        setUser(res.payload);
         toast({
           title: "Success",
           description: res.description,

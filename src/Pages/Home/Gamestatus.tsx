@@ -27,9 +27,12 @@ const GameS = () => {
         <Heading as="h1" size="2xl" noOfLines={1}>
           BET {gameStatus?.minBet}
         </Heading>
-        <Heading as="h2" size="lg" noOfLines={1}>
-          MAX PAYOUT 6000
-        </Heading>
+        {gameStatus && (
+          <Heading as="h2" size="lg" noOfLines={1}>
+            MAX PAYOUT{" "}
+            {+gameStatus?.first + gameStatus?.second + gameStatus?.third}
+          </Heading>
+        )}
       </Flex>
     </>
   );

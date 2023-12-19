@@ -28,7 +28,7 @@ const Home = () => {
     });
   }, []);
   return (
-    <Flex paddingX="25px" flexDir="column">
+    <Flex paddingX="15px" flexDir="column">
       <Header user={user} />
       <Banner />
       <Flex

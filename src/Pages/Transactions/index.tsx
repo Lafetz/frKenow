@@ -14,15 +14,9 @@ import {
 import Header from "../Home/Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
-import { User } from "../../utils/types/data";
+import { Transaction, User } from "../../utils/types/data";
 import { AckEvent } from "../../utils/types/socketEvents";
 
-type Transaction = {
-  _id: string;
-  timestamp: Date;
-  amount: number;
-  status: string;
-};
 const Transactions = () => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
