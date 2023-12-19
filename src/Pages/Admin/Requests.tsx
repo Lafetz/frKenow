@@ -5,8 +5,6 @@ import {
   TableCaption,
   TableContainer,
   Tbody,
-  Td,
-  Text,
   Th,
   Thead,
   Tr,
@@ -16,7 +14,7 @@ import AdminHeader from "./Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
-import { TransType, Transaction, User } from "../../utils/types/data";
+import { Transaction, User } from "../../utils/types/data";
 import Request from "./Request";
 import { useNavigate } from "react-router-dom";
 
