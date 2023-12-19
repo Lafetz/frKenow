@@ -1,4 +1,4 @@
-import { Button, Flex, Text, Tr, Td } from "@chakra-ui/react";
+import { Button, Tr, Td } from "@chakra-ui/react";
 import { Transaction } from "../../utils/types/data";
 type Props = {
   transaction: Transaction;
