@@ -25,6 +25,10 @@ export const Sigup = () => {
   const [number, setNumber] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
+  const [email, setEmail] = useState("");
+  const emailChange = (e: any) => {
+    setEmail(e.target.value);
+  };
   const fnameChange = (e: any) => {
     setFname(e.target.value);
   };
@@ -46,6 +50,7 @@ export const Sigup = () => {
     const data = {
       fname,
       lname,
+      email,
       number,
       username,
       password,
@@ -158,6 +163,27 @@ export const Sigup = () => {
                   return (
                     <Text key={i} color="red" flexDir="column">
                       {" "}
+                      {err.message}
+                    </Text>
+                  );
+                }
+              })}
+            </Box>
+          </FormControl>
+          <FormControl>
+            <FormLabel>Email:</FormLabel>
+            <Input
+              onChange={emailChange}
+              placeholder="example@gmail.com"
+              type="email"
+              variant="filled"
+              mb={3}
+            />
+            <Box>
+              {fielderrors?.map((err, i) => {
+                if (err.field === "email") {
+                  return (
+                    <Text key={i} color="red" flexDir="column">
                       {err.message}
                     </Text>
                   );

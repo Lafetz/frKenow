@@ -63,9 +63,7 @@ const Withdraw = () => {
   return (
     <>
       <MenuItem onClick={onOpen}>Withdraw</MenuItem>
-      {/* <Button size="md" bg="#4f0321" color="white" onClick={onOpen}>
-        Withdraw
-      </Button> */}
+
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

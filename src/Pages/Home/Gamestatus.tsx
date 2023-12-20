@@ -24,13 +24,15 @@ const GameS = () => {
   return (
     <>
       <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
-        <Heading as="h1" size="2xl" noOfLines={1}>
+        <Heading as="h1" size={["2xl", "xl"]} noOfLines={1}>
           BET {gameStatus?.minBet}
         </Heading>
         {gameStatus && (
-          <Heading as="h2" size="lg" noOfLines={1}>
-            MAX PAYOUT{" "}
-            {+gameStatus?.first + gameStatus?.second + gameStatus?.third}
+          <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
+            MAX PAYOUT
+            {Number(gameStatus?.first) +
+              Number(gameStatus?.second) +
+              Number(gameStatus?.third)}
           </Heading>
         )}
       </Flex>
