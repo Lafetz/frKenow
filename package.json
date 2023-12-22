@@ -19,7 +19,7 @@
     "@emotion/styled": "^11.11.0",
     "@fontsource/open-sans": "^5.0.20",
     "@fontsource/roboto": "^5.0.8",
-    "framer-motion": "^10.16.15",
+    "framer-motion": "^10.16.16",
     "match-sorter": "^6.3.1",
     "react": "^18.2.0",
     "react-countdown": "^2.3.5",

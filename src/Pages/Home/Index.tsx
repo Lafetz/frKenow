@@ -7,11 +7,12 @@ import { Banner } from "./Banner";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { User } from "../../utils/types/data";
-import { AckEvent } from "../../utils/types/socketEvents";
+import { AckEvent, GameStatus } from "../../utils/types/socketEvents";
 const Home = () => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const [user, setUser] = useState<User>();
+  const [status, setStatus] = useState<GameStatus>();
   useEffect(() => {
     socket.emit("user", (res: AckEvent) => {
       if (res.code == 200) {
@@ -27,8 +28,9 @@ const Home = () => {
       }
     });
   }, []);
+
   return (
-    <Flex paddingX="15px" flexDir="column">
+    <Flex paddingX="10px" flexDir="column">
       <Header user={user} />
       <Banner />
       <Flex
@@ -36,8 +38,15 @@ const Home = () => {
         justifyContent="space-around"
         flexWrap="wrap-reverse"
       >
-        <Winners />
-        {user && <Game user={user} setUser={setUser} />}
+        <Winners status={status} />
+        {user && (
+          <Game
+            user={user}
+            setUser={setUser}
+            status={status}
+            setStatus={setStatus}
+          />
+        )}
         {!user && <Spinner alignSelf="center" size="xl" />}
       </Flex>
     </Flex>

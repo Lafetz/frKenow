@@ -12,13 +12,15 @@ import GameS from "./Gamestatus";
 type Props = {
   user: any;
   setUser: any;
+  status: any;
+  setStatus: any;
 };
-export const Game = ({ user, setUser }: Props) => {
+export const Game = ({ user, setUser, status, setStatus }: Props) => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const [balls, setBalls] = useState<Ball[]>([]);
   const [userBalls, setUserBalls] = useState<Ball[]>([]);
-  const [status, setStatus] = useState<GameStatus>();
+
   if (!socket) {
     return <></>;
   }

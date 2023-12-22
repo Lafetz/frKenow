@@ -48,6 +48,7 @@ export const Sigin = () => {
       },
       body: JSON.stringify(data),
     });
+    console.log(res);
     setFieldErrors([]);
     setLoading(false);
     if (res.status === 200) {

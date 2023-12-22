@@ -10,6 +10,7 @@ export type StatusEvent = {
 };
 export type GameStatus = {
   minBet: number;
+  gameno: number;
   started: boolean;
   balls: Ball[];
   first: number;

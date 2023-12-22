@@ -12,11 +12,11 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import AdminHeader from "./Header";
+import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
-import CurrentGame from "./currentGame";
+import CurrentGame from "./components/currentGame";
 import { User } from "../../utils/types/data";
 import { useNavigate } from "react-router-dom";
 
@@ -62,7 +62,7 @@ const NewGame = () => {
   };
 
   const startGame = () => {
-    socket.emit("start", betAmount, first, second, third, (res: AckEvent) => {
+    socket.emit("update", betAmount, first, second, third, (res: AckEvent) => {
       if (res.code == 200) {
         toast({
           title: "Success",
@@ -148,7 +148,7 @@ const NewGame = () => {
                   </NumberInputStepper>
                 </NumberInput>
               </FormControl>
-              <Button onClick={startGame}>Start</Button>
+              <Button onClick={startGame}>Update </Button>
             </Flex>
           </Center>
         </Flex>

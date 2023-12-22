@@ -10,12 +10,12 @@ import {
   Tr,
   useToast,
 } from "@chakra-ui/react";
-import AdminHeader from "./Header";
+import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
 import { Transaction, User } from "../../utils/types/data";
-import Request from "./Request";
+import Request from "./components/Request";
 import { useNavigate } from "react-router-dom";
 
 const Requests = () => {

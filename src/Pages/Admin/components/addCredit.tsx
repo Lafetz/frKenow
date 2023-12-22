@@ -2,11 +2,11 @@ import {
   Button,
   FormControl,
   FormLabel,
-  MenuItem,
   Modal,
   ModalBody,
   ModalContent,
   ModalFooter,
+  ModalHeader,
   ModalOverlay,
   NumberDecrementStepper,
   NumberIncrementStepper,
@@ -19,20 +19,22 @@ import {
 import { useContext, useState } from "react";
 import { SocketContext } from "../../Context/socketContext";
 import { AckEvent } from "../../../utils/types/socketEvents";
-import { useNavigate } from "react-router-dom";
 
-const Withdraw = () => {
-  const navigate = useNavigate();
+type Props = {
+  username: string;
+};
 
+const AddCredit = ({ username }: Props) => {
   const { socket } = useContext(SocketContext);
   const [amount, setAmount] = useState(0);
   const onAmountChange = (e: any) => {
     setAmount(e.target.value);
   };
   const toast = useToast();
-  const withdrawMoney = () => {
-    socket.emit("transactions", amount, (res: AckEvent) => {
+  const depositMoney = () => {
+    socket.emit("credit", username, amount, (res: AckEvent) => {
       if (res.code == 200) {
+        console.log(res.payload);
         toast({
           title: "Success",
           description: res.description,
@@ -40,7 +42,6 @@ const Withdraw = () => {
           duration: 4000,
           isClosable: true,
         });
-        navigate("/transactions");
       } else if (res.code == 400) {
         toast({
           title: "Error",
@@ -63,12 +64,12 @@ const Withdraw = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <MenuItem onClick={onOpen}>Withdraw</MenuItem>
-
+      <Button onClick={onOpen}>Add Credit</Button>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
-          <ModalBody paddingTop="50px">
+          <ModalHeader w="max-content">Add Credit to {username}?</ModalHeader>
+          <ModalBody paddingTop="10px">
             <FormControl>
               <FormLabel>Amount</FormLabel>
               <NumberInput value={amount}>
@@ -80,13 +81,12 @@ const Withdraw = () => {
               </NumberInput>
             </FormControl>
           </ModalBody>
-
           <ModalFooter justifyContent="center">
             <Button colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>
-            <Button colorScheme="green" onClick={withdrawMoney}>
-              Withdraw
+            <Button colorScheme="green" onClick={depositMoney}>
+              Add
             </Button>
           </ModalFooter>
         </ModalContent>
@@ -94,4 +94,4 @@ const Withdraw = () => {
     </>
   );
 };
-export default Withdraw;
+export default AddCredit;

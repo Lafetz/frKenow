@@ -5,7 +5,10 @@ import { SocketContext } from "../Context/socketContext";
 import { Report } from "../../utils/types/data";
 import { AckEvent } from "../../utils/types/socketEvents";
 import src from "../../assets/moneyIcon.png";
-const Winners = () => {
+type Props = {
+  status: any;
+};
+const Winners = ({ status }: Props) => {
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const [winners, setWinners] = useState<Report[]>();
@@ -23,7 +26,7 @@ const Winners = () => {
         });
       }
     });
-  }, []);
+  }, [status]);
   return (
     <Flex alignItems="center" flexDir="column" gap="5px">
       <Flex
@@ -35,12 +38,19 @@ const Winners = () => {
         borderRadius="xl"
         paddingY="5px"
       >
-        <Text color="#1e3f2e" fontSize="x-large" as="b">
+        <Text color="#1e3f2e" fontSize="x-large" as="b" paddingX="10px">
           WINNERS
         </Text>
-        <Image height="30px" src={src} />
+        <Image height="40px" src={src} />
       </Flex>
-      <Flex gap="5px" bg="#fef79d" flexDir="column" padding="10px">
+      <Flex
+        gap="5px"
+        bg="#fef79d"
+        flexDir="column"
+        padding="10px"
+        minW="250px"
+        borderRadius="md"
+      >
         {winners?.map((x, i) =>
           //@ts-ignore
           x.winners.map((r, k) => {

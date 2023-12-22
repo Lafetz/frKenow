@@ -1,5 +1,5 @@
 import { Button, Tr, Td } from "@chakra-ui/react";
-import { Transaction } from "../../utils/types/data";
+import { Transaction } from "../../../utils/types/data";
 type Props = {
   transaction: Transaction;
 };

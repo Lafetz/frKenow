@@ -13,9 +13,10 @@ import { Sigin } from "./Pages/Signin/Signin";
 import { Sigup } from "./Pages/Signup/Signup";
 import NewGame from "./Pages/Admin/NewGame";
 import Reports from "./Pages/Admin/Reports";
-import { ProtectedRoute } from "./Pages/components/protectedroutes";
+import { ProtectedRoute } from "./Pages/protected_routes/protectedroutes";
 import Transactions from "./Pages/Transactions";
 import Requests from "./Pages/Admin/Requests";
+import Users from "./Pages/Admin/Users";
 
 function App() {
   //lobbby you joined left
@@ -28,6 +29,7 @@ function App() {
           <Route path="admin/new" element={<NewGame />} />
           <Route path="admin/reports" element={<Reports />} />
           <Route path="admin/requests" element={<Requests />} />
+          <Route path="admin/users" element={<Users />} />
         </Route>
 
         <Route path="signin" element={<Sigin />} />

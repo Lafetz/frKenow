@@ -1,7 +1,7 @@
 export type User = {
   auth: boolean;
-  username: String;
-  phonenumber: number;
+  username: string;
+  number: number;
   isAdmin: boolean;
   credit: number;
 };

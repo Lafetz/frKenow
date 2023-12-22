@@ -7,8 +7,9 @@ import {
   Heading,
   useToast,
   Spinner,
+  Center,
 } from "@chakra-ui/react";
-import AdminHeader from "./Header";
+import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
@@ -63,8 +64,9 @@ const Reports = () => {
   }, []);
   return (
     <>
-      {!user && <Spinner />}
-      {user && (
+      <Center> {!user && <Spinner marginTop="50px" />}</Center>
+
+      {!user && (
         <Flex flexDir="column">
           <AdminHeader />
 

@@ -10,6 +10,7 @@ type Props = {
 const Winner = ({ reportI, reportsI, reports }: Props) => {
   const { isOpen, onToggle } = useDisclosure();
   useEffect(() => {
+    console.log(reportI, reportsI, reports);
     onToggle();
   }, []);
   return (

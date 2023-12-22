@@ -1,6 +1,6 @@
 import { Center, Spinner, Text } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
-import { GameStatus } from "../../utils/types/socketEvents";
+import { GameStatus } from "../../../utils/types/socketEvents";
 
 const CurrentGame = ({ socket }: any) => {
   const [gameStatus, setGameStatus] = useState<GameStatus>();

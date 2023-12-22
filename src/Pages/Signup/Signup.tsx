@@ -11,13 +11,14 @@ import {
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 type FieldError = {
   message: string;
   field: string;
 };
 export const Sigup = () => {
   const toast = useToast();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [fielderrors, setFieldErrors] = useState<FieldError[]>();
   const [username, setUsername] = useState("");
@@ -25,10 +26,11 @@ export const Sigup = () => {
   const [number, setNumber] = useState("");
   const [fname, setFname] = useState("");
   const [lname, setLname] = useState("");
-  const [email, setEmail] = useState("");
-  const emailChange = (e: any) => {
-    setEmail(e.target.value);
+  const [confirm, setConfirm] = useState("");
+  const confirmChange = (e: any) => {
+    setConfirm(e.target.value);
   };
+
   const fnameChange = (e: any) => {
     setFname(e.target.value);
   };
@@ -50,45 +52,48 @@ export const Sigup = () => {
     const data = {
       fname,
       lname,
-      email,
+      confirm,
       number,
       username,
       password,
     };
     setLoading(true);
-    const res = await fetch("https://daclan.onrender.com/signup", {
-      method: "POST",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
-    setLoading(false);
-
-    setFieldErrors([]);
-    if (res.status === 201) {
-      toast({
-        title: "Account created.",
-        description: "Sign in to continue",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
+    try {
+      const res = await fetch("https://daclan.onrender.com/signup", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-      // navigate("/");
-    } else if (res.status === 403) {
-      const errorResponse = await res.json();
-      setFieldErrors(errorResponse.errors);
-      //setFieldErrors();
-    } else {
       setLoading(false);
-      toast({
-        title: "Server Error.",
-        description: "There was a problem processing your Request",
-        status: "error",
-        duration: 9000,
-        isClosable: true,
-      });
+      setFieldErrors([]);
+      if (res.status === 201) {
+        toast({
+          title: "Account created.",
+          description: "Sign in to continue",
+          status: "success",
+          duration: 9000,
+          isClosable: true,
+        });
+        navigate("/signin");
+      } else if (res.status === 403) {
+        const errorResponse = await res.json();
+        setFieldErrors(errorResponse.errors);
+        //setFieldErrors();
+      } else {
+        setLoading(false);
+        toast({
+          title: "Server Error.",
+          description: "There was a problem processing your Request",
+          status: "error",
+          duration: 9000,
+          isClosable: true,
+        });
+      }
+    } catch (err) {
+      setLoading(false);
     }
   };
   return (
@@ -170,27 +175,7 @@ export const Sigup = () => {
               })}
             </Box>
           </FormControl>
-          <FormControl>
-            <FormLabel>Email:</FormLabel>
-            <Input
-              onChange={emailChange}
-              placeholder="example@gmail.com"
-              type="email"
-              variant="filled"
-              mb={3}
-            />
-            <Box>
-              {fielderrors?.map((err, i) => {
-                if (err.field === "email") {
-                  return (
-                    <Text key={i} color="red" flexDir="column">
-                      {err.message}
-                    </Text>
-                  );
-                }
-              })}
-            </Box>
-          </FormControl>
+
           <FormControl>
             <FormLabel>Username:</FormLabel>
             <Input
@@ -235,7 +220,29 @@ export const Sigup = () => {
               })}
             </Box>
           </FormControl>
-
+          <FormControl>
+            <FormLabel>Confirm Password:</FormLabel>
+            <Input
+              onChange={confirmChange}
+              value={confirm}
+              placeholder="**********"
+              type="password"
+              variant="filled"
+              mb={1}
+            />
+            <Box>
+              {fielderrors?.map((err, i) => {
+                if (err.field === "password") {
+                  return (
+                    <Text key={i} color="red" flexDir="column">
+                      {" "}
+                      {err.message}
+                    </Text>
+                  );
+                }
+              })}
+            </Box>
+          </FormControl>
           <Button
             marginY={"5px"}
             isLoading={loading}

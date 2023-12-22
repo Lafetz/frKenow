@@ -15,8 +15,10 @@ const GameS = () => {
   useEffect(() => {
     const onGameStatus = (res: GameStatus) => {
       setGameStatus(res);
+      console.log(res);
     };
     socket.on("game_status", onGameStatus);
+
     return () => {
       socket.off("bet", onGameStatus);
     };
@@ -25,15 +27,23 @@ const GameS = () => {
     <>
       <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
         <Heading as="h1" size={["2xl", "xl"]} noOfLines={1}>
+          Game #{gameStatus?.gameno && <>{Number(gameStatus?.gameno) + 1}</>}
+        </Heading>
+        <Heading as="h1" size={["xl", "lg"]} noOfLines={1}>
           BET {gameStatus?.minBet}
         </Heading>
         {gameStatus && (
-          <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
-            MAX PAYOUT
-            {Number(gameStatus?.first) +
-              Number(gameStatus?.second) +
-              Number(gameStatus?.third)}
-          </Heading>
+          <Flex gap="15px">
+            <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
+              First Prize: {Number(gameStatus?.first)}
+            </Heading>
+            <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
+              Second Prize: {Number(gameStatus?.second)}
+            </Heading>
+            <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
+              Third Prize: {Number(gameStatus?.third)}
+            </Heading>
+          </Flex>
         )}
       </Flex>
     </>
