@@ -28,7 +28,6 @@ export const BallComponent = ({ ball, setUser }: Props) => {
   const placeBet = () => {
     socket.emit("bet", ball.number, (res: AckEvent) => {
       if (res.code == 200) {
-        console.log(res);
         setUser(res.payload);
         toast({
           title: "Success",

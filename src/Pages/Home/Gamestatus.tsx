@@ -26,14 +26,19 @@ const GameS = () => {
   return (
     <>
       <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
-        <Heading as="h1" size={["2xl", "xl"]} noOfLines={1}>
+        <Heading as="h1" size={["2xl", "xl"]} noOfLines={3}>
           Game #{gameStatus?.gameno && <>{Number(gameStatus?.gameno) + 1}</>}
         </Heading>
         <Heading as="h1" size={["xl", "lg"]} noOfLines={1}>
           BET {gameStatus?.minBet}
         </Heading>
         {gameStatus && (
-          <Flex gap="15px">
+          <Flex
+            gap="15px"
+            flexWrap="wrap"
+            alignItems="center"
+            justifyContent="center"
+          >
             <Heading as="h2" size={["lg", "md"]} noOfLines={1}>
               First Prize: {Number(gameStatus?.first)}
             </Heading>

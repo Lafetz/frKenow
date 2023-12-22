@@ -8,6 +8,7 @@ import {
   useToast,
   Spinner,
   Center,
+  Select,
 } from "@chakra-ui/react";
 import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
@@ -22,6 +23,10 @@ const Reports = () => {
   const [payout, setPayout] = useState(0);
   const navigate = useNavigate();
   const [user, setUser] = useState<User>();
+  const [select, setSelect] = useState("today");
+  const selectChange = (e: any) => {
+    setSelect(e.target.value);
+  };
   useEffect(() => {
     socket.emit("user", (res: AckEvent) => {
       if (res.code == 200) {
@@ -66,35 +71,56 @@ const Reports = () => {
     <>
       <Center> {!user && <Spinner marginTop="50px" />}</Center>
 
-      {!user && (
-        <Flex flexDir="column">
+      {user && (
+        <Flex flexDir="column" paddingTop="10px">
           <AdminHeader />
 
-          <Flex gap="10px" flexWrap="wrap" alignSelf="center">
-            <Card maxW="300px">
-              <CardHeader>
-                <Heading size="md">STAKE</Heading>
-              </CardHeader>
-              <CardBody>
-                <Stat>{total}</Stat>
-              </CardBody>
-            </Card>
-            <Card maxW="300px">
-              <CardHeader>
-                <Heading size="md">PAYOUT</Heading>
-              </CardHeader>
-              <CardBody>
-                <Stat>{payout}</Stat>
-              </CardBody>
-            </Card>
-            <Card maxW="300px">
-              <CardHeader>
-                <Heading size="md">PROFIT</Heading>
-              </CardHeader>
-              <CardBody>
-                <Stat>{total - payout}</Stat>
-              </CardBody>
-            </Card>
+          <Flex
+            paddingTop="25px"
+            alignSelf="center"
+            gap="25px"
+            flexDir="column"
+          >
+            <Flex minW="350px" width="100%" justifyContent="space-between">
+              <Heading size="md">PAYOUT</Heading>
+              <Select
+                value={select}
+                size="sm"
+                w="fit-content"
+                onChange={selectChange}
+              >
+                <option value="today">Today</option>
+                <option value="week">This Week</option>
+                <option value="month">This Month</option>
+              </Select>
+            </Flex>
+            <Flex gap="10px" flexWrap="wrap" alignSelf="center">
+              <Card maxW="300px">
+                <CardHeader>
+                  <Heading size="md">STAKE</Heading>
+                </CardHeader>
+
+                <CardBody>
+                  <Stat>{total}</Stat>
+                </CardBody>
+              </Card>
+              <Card maxW="300px">
+                <CardHeader>
+                  <Heading size="md">PAYOUT</Heading>
+                </CardHeader>
+                <CardBody>
+                  <Stat>{payout}</Stat>
+                </CardBody>
+              </Card>
+              <Card maxW="300px">
+                <CardHeader>
+                  <Heading size="md">PROFIT</Heading>
+                </CardHeader>
+                <CardBody>
+                  <Stat>{total - payout}</Stat>
+                </CardBody>
+              </Card>
+            </Flex>
           </Flex>
         </Flex>
       )}

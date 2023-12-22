@@ -15,7 +15,7 @@ import { keyframes } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 
 const animationKeyframes = keyframes`
-  0%  {   transform: scale(1) rotate(270deg); right:-80px }
+  0%  {   transform: scale(0.70) rotate(270deg); right:-80px }
   25%  {  transform: scale(1) rotate(0); right:5px }
   100%  {   right:5px }
 `;

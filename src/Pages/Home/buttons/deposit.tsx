@@ -71,7 +71,7 @@ const Deposit = () => {
           <ModalBody paddingTop="50px">
             <FormControl>
               <FormLabel>Amount</FormLabel>
-              <NumberInput value={amount}>
+              <NumberInput min={1} value={amount}>
                 <NumberInputField onChange={onAmountChange} />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
