@@ -27,6 +27,7 @@ type Props = {
 const AddCredit = ({ username }: Props) => {
   const { socket } = useContext(SocketContext);
   const [amount, setAmount] = useState(0);
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const onAmountChange = (e: any) => {
     setAmount(e.target.value);
   };
@@ -34,6 +35,7 @@ const AddCredit = ({ username }: Props) => {
   const depositMoney = () => {
     socket.emit("credit", username, amount, (res: AckEvent) => {
       if (res.code == 200) {
+        onClose();
         console.log(res.payload);
         toast({
           title: "Success",
@@ -61,7 +63,7 @@ const AddCredit = ({ username }: Props) => {
       }
     });
   };
-  const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Button onClick={onOpen}>Add Credit</Button>

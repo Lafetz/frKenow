@@ -16,7 +16,7 @@ import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
-import CurrentGame from "./components/currentGame";
+
 import { User } from "../../utils/types/data";
 import { useNavigate } from "react-router-dom";
 
@@ -95,7 +95,7 @@ const NewGame = () => {
       {user && (
         <Flex flexDir="column">
           <AdminHeader />
-          <CurrentGame socket={socket} />
+
           <Center>
             <Flex
               justifyContent="center"
