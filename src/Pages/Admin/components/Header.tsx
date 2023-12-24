@@ -16,9 +16,11 @@ import {
 import logo from "../../../assets/logo.png";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import SignoutAdmin from "./signout";
 
 const AdminHeader = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
+
   return (
     <>
       <Flex
@@ -46,9 +48,7 @@ const AdminHeader = () => {
           <Text height="max-content" as="b">
             Admin
           </Text>
-          <Button size="md" bg="#4f0321" color="white">
-            Sign out
-          </Button>
+          <SignoutAdmin />
         </Flex>
       </Flex>
       <Drawer placement="left" onClose={onClose} isOpen={isOpen}>

@@ -9,6 +9,7 @@ import {
   Spinner,
   Center,
   Select,
+  Button,
 } from "@chakra-ui/react";
 import AdminHeader from "./components/Header";
 import { useContext, useEffect, useState } from "react";
@@ -46,7 +47,7 @@ const Reports = () => {
     });
   }, []);
   useEffect(() => {
-    socket.emit("report", (res: AckEvent) => {
+    socket.emit("report", select, (res: AckEvent) => {
       if (res.code == 200) {
         let t = 0;
         let p = 0;
@@ -67,6 +68,28 @@ const Reports = () => {
       }
     });
   }, []);
+  const reportchange = () => {
+    socket.emit("report", select, (res: AckEvent) => {
+      if (res.code == 200) {
+        let t = 0;
+        let p = 0;
+        res.payload.map((r: Report) => {
+          t += r.bet * 30;
+          p = r.first + r.second + r.third;
+        });
+        setTotal(t);
+        setPayout(p);
+      } else {
+        toast({
+          title: "Error",
+          description: "internal server error",
+          status: "error",
+          duration: 4000,
+          isClosable: true,
+        });
+      }
+    });
+  };
   return (
     <>
       <Center> {!user && <Spinner marginTop="50px" />}</Center>
@@ -93,6 +116,7 @@ const Reports = () => {
                 <option value="week">This Week</option>
                 <option value="month">This Month</option>
               </Select>
+              <Button onClick={reportchange}>Change</Button>
             </Flex>
             <Flex gap="10px" flexWrap="wrap" alignSelf="center">
               <Card maxW="300px">

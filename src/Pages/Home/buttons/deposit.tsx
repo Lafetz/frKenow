@@ -41,7 +41,9 @@ const Deposit = () => {
           duration: 4000,
           isClosable: true,
         });
-        window.open(res.payload, "_blank");
+        // location.href(res.payload);
+        window.location = res.payload;
+        // window.open(res.payload, "_blank");
       } else if (res.code == 400) {
         toast({
           title: "Error",

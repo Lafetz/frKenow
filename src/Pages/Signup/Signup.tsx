@@ -8,17 +8,20 @@ import {
   Heading,
   Input,
   Text,
+  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import OtpInput from "./otpInput";
 type FieldError = {
   message: string;
   field: string;
 };
 export const Sigup = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
-  const navigate = useNavigate();
+
   const [loading, setLoading] = useState(false);
   const [fielderrors, setFieldErrors] = useState<FieldError[]>();
   const [username, setUsername] = useState("");
@@ -59,7 +62,7 @@ export const Sigup = () => {
     };
     setLoading(true);
     try {
-      const res = await fetch("https://daclan.onrender.com/signup", {
+      const res = await fetch("https://daclan.onrender.com/otpSignup", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -71,17 +74,17 @@ export const Sigup = () => {
       setFieldErrors([]);
       if (res.status === 201) {
         toast({
-          title: "Account created.",
-          description: "Sign in to continue",
+          title: "otp",
+          description: "we have sent verf",
           status: "success",
           duration: 9000,
           isClosable: true,
         });
-        navigate("/signin");
+        onOpen();
       } else if (res.status === 403) {
         const errorResponse = await res.json();
+
         setFieldErrors(errorResponse.errors);
-        //setFieldErrors();
       } else {
         setLoading(false);
         toast({
@@ -98,6 +101,19 @@ export const Sigup = () => {
   };
   return (
     <>
+      <OtpInput
+        field={{
+          fname,
+          lname,
+          confirm,
+          number,
+          username,
+          password,
+        }}
+        isOpen={isOpen}
+        setFieldErrors={setFieldErrors}
+        onClose={onClose}
+      />
       <Flex
         minH="100vh"
         alignItems="center"
@@ -232,7 +248,7 @@ export const Sigup = () => {
             />
             <Box>
               {fielderrors?.map((err, i) => {
-                if (err.field === "password") {
+                if (err.field === "confirm") {
                   return (
                     <Text key={i} color="red" flexDir="column">
                       {" "}

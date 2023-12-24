@@ -8,7 +8,9 @@ import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { User } from "../../utils/types/data";
 import { AckEvent, GameStatus } from "../../utils/types/socketEvents";
+import { useNavigate } from "react-router-dom";
 const Home = () => {
+  const navigate = useNavigate();
   const { socket } = useContext(SocketContext);
   const toast = useToast();
   const [user, setUser] = useState<User>();
@@ -17,6 +19,8 @@ const Home = () => {
     socket.emit("user", (res: AckEvent) => {
       if (res.code == 200) {
         setUser(res.payload);
+      } else if (res.code == 404) {
+        navigate("/signin");
       } else {
         toast({
           title: "server error",

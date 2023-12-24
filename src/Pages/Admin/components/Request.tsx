@@ -1,5 +1,6 @@
-import { Button, Tr, Td } from "@chakra-ui/react";
+import { Tr, Td } from "@chakra-ui/react";
 import { Transaction } from "../../../utils/types/data";
+import ApproveTransaction from "./approve";
 type Props = {
   transaction: Transaction;
 };
@@ -11,7 +12,9 @@ const Request = ({ transaction }: Props) => {
       <Td>{transaction.amount} ETB</Td>
       <Td>{transaction.status}</Td>
       <Td>
-        <Button>Approve</Button>
+        {transaction.status == "pending" && (
+          <ApproveTransaction trans={transaction} />
+        )}
       </Td>
     </Tr>
   );

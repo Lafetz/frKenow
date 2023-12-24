@@ -8,30 +8,33 @@ import {
   Heading,
   Input,
   Text,
+  useDisclosure,
   useToast,
 } from "@chakra-ui/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import ForgotPass from "./forgot";
 type FieldError = {
   message: string;
   field: string;
 };
-
+import { Link as ChakraLink } from "@chakra-ui/react";
 export const Sigin = () => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const toast = useToast();
   const [fielderrors, setFieldErrors] = useState<FieldError[]>();
   const [error, setError] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-
+  const navigate = useNavigate();
   const usernameChange = (e: any) => {
     setUsername(e.target.value);
   };
   const passwordChange = (e: any) => {
     setPassword(e.target.value);
   };
-  const navigate = useNavigate();
+
   const submitForm = async (e: any) => {
     e.preventDefault();
     const data = {
@@ -48,7 +51,7 @@ export const Sigin = () => {
       },
       body: JSON.stringify(data),
     });
-    console.log(res);
+
     setFieldErrors([]);
     setLoading(false);
     if (res.status === 200) {
@@ -75,6 +78,7 @@ export const Sigin = () => {
   };
   return (
     <>
+      <ForgotPass isOpen={isOpen} onClose={onClose} />
       <Flex
         h="100vh"
         alignItems="center"
@@ -154,6 +158,16 @@ export const Sigin = () => {
               </Link>
             </Text>
           </Box>
+          <Center>
+            <ChakraLink
+              style={{
+                fontWeight: "bold",
+              }}
+              onClick={onOpen}
+            >
+              forgotten password?
+            </ChakraLink>{" "}
+          </Center>
         </Flex>
       </Flex>
     </>

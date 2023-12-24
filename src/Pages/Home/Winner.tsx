@@ -13,21 +13,24 @@ const Winner = ({ reportI, reportsI, reports }: Props) => {
     onToggle();
   }, []);
   return (
-    <ScaleFade
-      in={isOpen}
-      transition={{ exit: { delay: 2 }, enter: { duration: 0.5 } }}
-    >
-      <Flex alignItems="center" gap="15px" color="#693f62">
+    <ScaleFade in={isOpen} transition={{ enter: { duration: 1 } }}>
+      <Flex
+        justifyContent="space-between"
+        alignItems="center"
+        gap="15px"
+        color="#693f62"
+      >
         <Flex alignItems="center" gap="5px">
           <Avatar size="md" name="profile" src={src} />
+          <Text as="b">ball:{reports[reportsI].balls[reportI]}</Text>
           <Text as="b">@{reports[reportsI].winners[reportI]}</Text>
         </Flex>
-        <Text as="b">
+        <Text as="b" textAlign="right">
           {reportI == 0
             ? reports[reportsI].first
             : reportI == 1
             ? reports[reportsI].second
-            : reports[reportsI].third}{" "}
+            : reports[reportsI].third}
           ETB
         </Text>
       </Flex>

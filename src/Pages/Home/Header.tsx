@@ -17,6 +17,7 @@ import Withdraw from "./buttons/withdraw";
 import Deposit from "./buttons/deposit";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
+import Signout from "./buttons/signout";
 type Props = {
   user: any;
 };
@@ -82,6 +83,7 @@ const Header = ({ user }: Props) => {
             <MenuItem>
               <Link to="/transactions">Transactions</Link>
             </MenuItem>
+            <Signout />
           </MenuList>
         </Menu>
       </Flex>

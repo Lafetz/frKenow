@@ -9,6 +9,9 @@ export type Transaction = {
   _id: string;
   timestamp: Date;
   username: string;
+  fname: string;
+  lname: string;
+  account: string;
   amount: number;
   status: string;
 };
@@ -23,6 +26,19 @@ export type Report = {
   second: number;
   third: number;
   bet: number;
+  balls: number[];
   winners: string[];
   timestamp: Date;
+};
+export type Bank = {
+  id: string;
+  name: string;
+};
+export type Field = {
+  fname: string;
+  lname: string;
+  confirm: string;
+  number: string;
+  username: string;
+  password: string;
 };
