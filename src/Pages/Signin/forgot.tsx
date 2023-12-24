@@ -51,7 +51,7 @@ const ForgotPass = ({ isOpen, onClose }: Props) => {
   const requestOtp = async () => {
     try {
       setdisable(true);
-      const res = await fetch("http://localhost:8080/otpForgot", {
+      const res = await fetch("https://daclan.onrender.com/otpForgot", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -96,7 +96,7 @@ const ForgotPass = ({ isOpen, onClose }: Props) => {
     };
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:8080/update", {
+      const res = await fetch("https://daclan.onrender.com/update", {
         method: "POST",
         headers: {
           Accept: "application/json",
