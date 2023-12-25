@@ -44,7 +44,6 @@ export const EndPopup = ({ setUser }: Props) => {
   const [third, setThird] = useState<number | undefined>();
   const [number, setNumber] = useState(0);
   useEffect(() => {
-    onOpen();
     const onGameEnd = async (winningBalls: Ball[]) => {
       onOpen();
       setFirst(undefined);

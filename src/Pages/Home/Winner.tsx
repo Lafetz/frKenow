@@ -1,7 +1,7 @@
-import { Avatar, Flex, ScaleFade, Text, useDisclosure } from "@chakra-ui/react";
+import { Flex, ScaleFade, Text, useDisclosure } from "@chakra-ui/react";
 import { Report } from "../../utils/types/data";
 import { useEffect } from "react";
-import src from "../../assets/5.jpg";
+
 type Props = {
   reportsI: number;
   reportI: number;
@@ -21,7 +21,8 @@ const Winner = ({ reportI, reportsI, reports }: Props) => {
         color="#693f62"
       >
         <Flex alignItems="center" gap="5px">
-          <Avatar size="md" name="profile" src={src} />
+          <Text as="b">Game No:{reports[reportsI].gameno}</Text>
+
           <Text as="b">ball:{reports[reportsI].balls[reportI]}</Text>
           <Text as="b">@{reports[reportsI].winners[reportI]}</Text>
         </Flex>

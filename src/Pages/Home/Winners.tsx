@@ -44,7 +44,7 @@ const Winners = ({ status }: Props) => {
         <Image height="40px" src={src} />
       </Flex>
       <Flex
-        gap="5px"
+        gap="15px"
         bg="#fef79d"
         flexDir="column"
         padding="10px"
