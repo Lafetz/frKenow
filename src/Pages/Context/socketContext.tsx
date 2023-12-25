@@ -25,7 +25,7 @@ const SocketProvider = ({ children }: any) => {
     return <Navigate to="/sigin" />;
   }
 
-  const socket = io("http://localhost:8080", {
+  const socket = io("https://daclan.onrender.com", {
     auth: { token: token },
   });
 
