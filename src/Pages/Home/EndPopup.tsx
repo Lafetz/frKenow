@@ -13,7 +13,7 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-
+import ball from "../../assets/ball.png";
 const animationKeyframes = keyframes`
   0%  {   transform: scale(0.60) rotate(270deg); right:-80px }
   25%  {  transform: scale(1) rotate(0); right:5px }
@@ -44,6 +44,7 @@ export const EndPopup = ({ setUser }: Props) => {
   const [third, setThird] = useState<number | undefined>();
   const [number, setNumber] = useState(0);
   useEffect(() => {
+    onOpen();
     const onGameEnd = async (winningBalls: Ball[]) => {
       onOpen();
       setFirst(undefined);
@@ -62,7 +63,6 @@ export const EndPopup = ({ setUser }: Props) => {
         } else {
           setThird(winningBalls[2].number);
         }
-        console.log(number);
       }
 
       socket.emit("user", (res: AckEvent) => {
@@ -111,11 +111,13 @@ export const EndPopup = ({ setUser }: Props) => {
                   position="relative"
                   right="5px"
                   borderRadius="100%"
-                  height="90px"
-                  width="90px"
-                  bg="#f9d61a"
+                  height="100px"
+                  width="100px"
                   justifyContent="center"
                   alignItems="center"
+                  backgroundImage={ball}
+                  backgroundSize="contain"
+                  backgroundRepeat="no-repeat"
                 >
                   <Text fontSize="4xl" as="b">
                     <Center>{number}</Center>

@@ -1,4 +1,5 @@
 import {
+  Button,
   MenuItem,
   Modal,
   ModalBody,
@@ -24,6 +25,11 @@ const PastGames = () => {
   const { socket } = useContext(SocketContext);
   const [games, setGames] = useState<any>([]);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const [refresh, setRefresh] = useState(0);
+  const changeRefresh = () => {
+    const num = refresh == 0 ? 1 : 0;
+    setRefresh(num);
+  };
   const toast = useToast();
   useEffect(() => {
     const onPast = (res: AckEvent) => {
@@ -44,7 +50,7 @@ const PastGames = () => {
     return () => {
       socket.off("pastgames", onPast);
     };
-  }, []);
+  }, [refresh]);
 
   return (
     <>
@@ -53,9 +59,14 @@ const PastGames = () => {
         <ModalOverlay />
         <ModalContent>
           <ModalBody paddingTop="50px">
+            <Button onClick={changeRefresh}>Refresh</Button>
             {games.length != 0 && (
               <TableContainer>
-                <Table variant="simple">
+                <Table
+                  size={["md", "lg"]}
+                  variant="striped"
+                  colorScheme="orange"
+                >
                   <TableCaption>Transactions</TableCaption>
                   <Thead>
                     <Tr>

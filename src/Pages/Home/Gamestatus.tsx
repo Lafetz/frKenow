@@ -15,7 +15,6 @@ const GameS = () => {
   useEffect(() => {
     const onGameStatus = (res: GameStatus) => {
       setGameStatus(res);
-      console.log(res);
     };
     socket.on("game_status", onGameStatus);
 
