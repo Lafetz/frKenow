@@ -27,7 +27,7 @@ const GameS = () => {
     <>
       <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
         <Heading as="h1" size={["2xl", "xl"]} noOfLines={3}>
-          Game #{gameStatus?.gameno && <>{Number(gameStatus?.gameno) + 1}</>}
+          Game #{gameStatus?.gameno && <>{Number(gameStatus?.gameno)}</>}
         </Heading>
         <Heading as="h1" size={["xl", "lg"]} noOfLines={1}>
           BET {gameStatus?.minBet}

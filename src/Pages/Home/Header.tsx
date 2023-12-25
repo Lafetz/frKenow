@@ -18,6 +18,7 @@ import Deposit from "./buttons/deposit";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import Signout from "./buttons/signout";
+import PastGames from "./buttons/pastgames";
 type Props = {
   user: any;
 };
@@ -80,6 +81,7 @@ const Header = ({ user }: Props) => {
           <MenuList>
             <Deposit />
             <Withdraw />
+            <PastGames />
             <MenuItem>
               <Link to="/transactions">Transactions</Link>
             </MenuItem>

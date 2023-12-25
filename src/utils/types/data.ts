@@ -22,6 +22,7 @@ export enum TransType {
 }
 export type Report = {
   _id: string;
+  gameno: number;
   first: number;
   second: number;
   third: number;
