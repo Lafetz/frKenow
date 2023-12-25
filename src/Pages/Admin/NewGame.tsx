@@ -22,9 +22,9 @@ import { useNavigate } from "react-router-dom";
 
 const NewGame = () => {
   const [betAmount, setBetAmount] = useState(200);
-  const [first, setFirst] = useState(3000);
-  const [second, setSecond] = useState(2000);
-  const [third, setThird] = useState(1000);
+  const [first, setFirst] = useState(4000);
+  const [second, setSecond] = useState(1200);
+  const [third, setThird] = useState(200);
   const { socket } = useContext(SocketContext);
 
   const toast = useToast();
