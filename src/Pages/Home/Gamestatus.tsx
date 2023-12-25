@@ -32,15 +32,15 @@ const GameS = () => {
           BET {gameStatus?.minBet}
         </Heading>
         {gameStatus && (
-          <Flex gap="3px" alignItems="center" justifyContent="center">
-            <Heading as="h2" size={["xs"]} noOfLines={1}>
-              First Prize: {Number(gameStatus?.first)}
+          <Flex gap="20px" alignItems="center" justifyContent="space-between">
+            <Heading as="h2" size={["sm"]} noOfLines={1}>
+              1<sup>st</sup>: {Number(gameStatus?.first)}
             </Heading>
-            <Heading as="h2" size={["xs"]} noOfLines={1}>
-              Second Prize: {Number(gameStatus?.second)}
+            <Heading as="h2" size={["sm"]} noOfLines={1}>
+              2<sup>2d</sup>: {Number(gameStatus?.second)}
             </Heading>
-            <Heading as="h2" size={["xs"]} noOfLines={1}>
-              Third Prize: {Number(gameStatus?.third)}
+            <Heading as="h2" size={["sm"]} noOfLines={1}>
+              3<sup>rd</sup>: {Number(gameStatus?.third)}
             </Heading>
           </Flex>
         )}
