@@ -62,11 +62,7 @@ const PastGames = () => {
             <Button onClick={changeRefresh}>Refresh</Button>
             {games.length != 0 && (
               <TableContainer>
-                <Table
-                  size={["md", "lg"]}
-                  variant="striped"
-                  colorScheme="orange"
-                >
+                <Table size={["sm"]} variant="striped" colorScheme="orange">
                   <TableCaption>Transactions</TableCaption>
                   <Thead>
                     <Tr>
