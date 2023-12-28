@@ -51,6 +51,7 @@ const ForgotPass = ({ isOpen, onClose }: Props) => {
   const requestOtp = async () => {
     try {
       setdisable(true);
+      setFieldErrors([]);
       const res = await fetch("https://daclan.onrender.com/otpForgot", {
         method: "POST",
         headers: {
