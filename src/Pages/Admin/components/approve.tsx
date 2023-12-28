@@ -57,7 +57,7 @@ const ApproveTransaction = ({ trans }: Props) => {
       }
     });
   };
-
+  console.log(trans);
   return (
     <>
       <Button onClick={onOpen}>approve</Button>
@@ -71,7 +71,7 @@ const ApproveTransaction = ({ trans }: Props) => {
                 Name: {trans.fname} {trans.lname}{" "}
               </Text>
 
-              <Text fontSize={["larger"]}>Bank: {trans.name} </Text>
+              <Text fontSize={["larger"]}>Bank: {trans.bankId} </Text>
               <Text fontSize={["larger"]}>account: {trans.account} </Text>
               <Text fontSize={["larger"]}>amount: {trans.amount} </Text>
             </Flex>
