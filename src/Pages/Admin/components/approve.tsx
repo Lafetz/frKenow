@@ -57,7 +57,7 @@ const ApproveTransaction = ({ trans }: Props) => {
       }
     });
   };
-  console.log(trans);
+
   return (
     <>
       <Button onClick={onOpen}>approve</Button>
