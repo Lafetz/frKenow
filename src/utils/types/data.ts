@@ -7,6 +7,7 @@ export type User = {
 };
 export type Transaction = {
   _id: string;
+  name: string;
   timestamp: Date;
   username: string;
   fname: string;

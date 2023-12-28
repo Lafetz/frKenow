@@ -70,6 +70,7 @@ const ApproveTransaction = ({ trans }: Props) => {
               <Text fontSize={["larger"]}>
                 Name: {trans.fname} {trans.lname}{" "}
               </Text>
+
               <Text fontSize={["larger"]}>Bank: {trans.name} </Text>
               <Text fontSize={["larger"]}>account: {trans.account} </Text>
               <Text fontSize={["larger"]}>amount: {trans.amount} </Text>
