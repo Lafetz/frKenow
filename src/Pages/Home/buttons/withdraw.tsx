@@ -107,7 +107,7 @@ const Withdraw = () => {
             >
               {banks.map((b) => {
                 return (
-                  <option key={b.id} value={b.id}>
+                  <option key={b.id} value={b.name}>
                     {b.name}
                   </option>
                 );
