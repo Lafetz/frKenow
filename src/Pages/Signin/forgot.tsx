@@ -162,9 +162,11 @@ const ForgotPass = ({ isOpen, onClose }: Props) => {
           <ModalBody pb={6}>
             <FormControl>
               <FormLabel>Phone number:</FormLabel>
+              +251
               <Input
                 onChange={numberChange}
-                placeholder="09******"
+                placeholder="9123456789"
+                maxLength={9}
                 type="tel"
                 variant="filled"
                 mb={3}
