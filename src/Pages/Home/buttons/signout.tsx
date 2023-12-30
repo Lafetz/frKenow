@@ -19,7 +19,7 @@ const Signout = () => {
   };
   return (
     <>
-      <MenuItem onClick={onOpen}>Signout</MenuItem>
+      <MenuItem onClick={onOpen}>ለመውጣት</MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

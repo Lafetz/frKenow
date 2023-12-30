@@ -83,7 +83,7 @@ const Header = ({ user }: Props) => {
             <Withdraw />
             <PastGames />
             <MenuItem>
-              <Link to="/transactions">Transactions</Link>
+              <Link to="/transactions">የገንዘብ ዝውውር ታሪክ</Link>
             </MenuItem>
             <Signout />
           </MenuList>

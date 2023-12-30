@@ -39,7 +39,7 @@ const Winners = ({ status }: Props) => {
         paddingY="5px"
       >
         <Text color="#1e3f2e" fontSize="x-large" as="b" paddingX="10px">
-          WINNERS
+          ዊነርስ
         </Text>
         <Image height="40px" src={src} />
       </Flex>

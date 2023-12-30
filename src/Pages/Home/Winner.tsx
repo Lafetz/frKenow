@@ -21,9 +21,9 @@ const Winner = ({ reportI, reportsI, reports }: Props) => {
         color="#693f62"
       >
         <Flex alignItems="center" gap="5px">
-          <Text as="b">Game No:{reports[reportsI].gameno}</Text>
+          <Text as="b">የጨዋታ ቁጥር:{reports[reportsI].gameno}</Text>
 
-          <Text as="b">ball:{reports[reportsI].balls[reportI]}</Text>
+          <Text as="b">ምስል:{reports[reportsI].balls[reportI]}</Text>
           <Text as="b">@{reports[reportsI].winners[reportI]}</Text>
         </Flex>
         <Text as="b" textAlign="right">

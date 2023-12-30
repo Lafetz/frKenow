@@ -66,7 +66,7 @@ const Deposit = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <MenuItem onClick={onOpen}>Deposit</MenuItem>
+      <MenuItem onClick={onOpen}>ተቀማጭ</MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

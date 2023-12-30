@@ -54,7 +54,7 @@ const PastGames = () => {
 
   return (
     <>
-      <MenuItem onClick={onOpen}>past games</MenuItem>
+      <MenuItem onClick={onOpen}>ያለፉ ጨዋታዎች</MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

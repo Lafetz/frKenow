@@ -73,17 +73,17 @@ const Transactions = () => {
           size="md"
           noOfLines={1}
         >
-          user's Transactions
+          የተጠቃሚ ወጪ
         </Heading>
         <Flex paddingTop="10px" justifyContent="center" flexDir="column">
           <TableContainer>
             <Table variant="simple">
-              <TableCaption>Transactions</TableCaption>
+              <TableCaption>ወጪ</TableCaption>
               <Thead>
                 <Tr>
-                  <Th>Withdrawl</Th>
-                  <Th>Amount</Th>
-                  <Th>Status</Th>
+                  <Th>ወጪ</Th>
+                  <Th>መጠን</Th>
+                  <Th>ሁኔታ</Th>
                 </Tr>
               </Thead>
               <Tbody>

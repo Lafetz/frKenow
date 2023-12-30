@@ -100,10 +100,15 @@ export const Game = ({ user, setUser, status, setStatus }: Props) => {
         {userBalls.length === 0 && status?.started && (
           <Flex color="#103d4d" gap="5px" flexDir="column" alignItems="center">
             <Text as="b" fontSize="2xl" textAlign="center">
-              You haven't selected any balls yet!
+              የአጨዋወት ዘዴ
             </Text>
-            <Text as="b" fontSize="2xl">
-              Click on the balls to Bet!
+            <Text as="b" fontSize="md" maxW="480px" textAlign="center">
+              ከተደረደሩት ምስች ውስጥ እድለኛ ያደርገኛል ብለው ያሰቡትን ምስል በመምረጥ እናም ጨዋታው የሚጠይቀውን
+              መደብ ተቀማጭ በማድረግ የጨዋታው አሸናፊ ይሁኑ አንድ ተጫዋች በአንድ ጨዋታ የተለያዩ ምስሎችን በመያዝ
+              የጨዋታው ተሳታፊ መሆን ይችላል ገንዘብ ገቢ ለማድረግ ተቀማጭ የሚለውን በመጫን የሚፈልጉን የብር መጠን
+              በማስገባት ከተዘረዘሩት የክፍያ አማራጮች (ቴሌብር፣ ሲቢብር …) ተጠቅሞ በማስገባት መጫወት ይችላሉ
+              ገንዘብ ወጪ ለማድረግ የሚፈልጉትን የክፍያ አማራጭ ይጠቀሙ፣ በመቀጠል ወጪ ለማድረግ የሚፈልጉትን የገንዘብ
+              መጠን፣ አካውንት ቁጥር ወይም ስልክ ቁጥሮን በማስገባት ወጪ ያድርጉ
             </Text>
           </Flex>
         )}

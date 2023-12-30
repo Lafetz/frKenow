@@ -93,7 +93,7 @@ const Withdraw = () => {
   }, []);
   return (
     <>
-      <MenuItem onClick={onOpen}>Withdraw</MenuItem>
+      <MenuItem onClick={onOpen}>ወጪ</MenuItem>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
