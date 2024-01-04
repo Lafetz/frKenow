@@ -10,12 +10,13 @@ import {
   ModalOverlay,
   WrapItem,
   useDisclosure,
-  useToast,
+  useToast,Image
 } from "@chakra-ui/react";
 import { Ball } from "../../utils/types/Game";
 import { SocketContext } from "../Context/socketContext";
 import { useContext } from "react";
 import { AckEvent } from "../../utils/types/socketEvents";
+import { images, texts } from "../../utils/game/images";
 
 type Props = {
   ball: Ball;
@@ -31,7 +32,7 @@ export const BallComponent = ({ ball, setUser }: Props) => {
         setUser(res.payload);
         toast({
           title: "Success",
-          description: res.description,
+          description: `you have placed bet on ${texts[ball.number-1]}`,
           status: "success",
           duration: 4000,
           isClosable: true,
@@ -61,17 +62,24 @@ export const BallComponent = ({ ball, setUser }: Props) => {
     <>
       <WrapItem
         onClick={onOpen}
-        w="48px"
-        h="48px"
+        w="80px"
+        h="80px"
         borderRadius="100%"
-        bg={ball.username == "" ? "#970db2" : "blue"}
+        bg={ball.username == "" ? "#693f62" :  "#fef79d"}
         color="white"
         padding="5px"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-        <Text>{ball.number}</Text>
+             <Image
+          boxSize="100%"
+          boxShadow='md'
+          borderRadius="md"
+          objectFit="fill"
+          src={images[ball.number-1]}
+          alt="jackpot banner"
+        />
       </WrapItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
@@ -80,7 +88,7 @@ export const BallComponent = ({ ball, setUser }: Props) => {
             <Flex flexDir="column" gap="15px">
               <Center>
                 <Text fontSize="xl" as="b">
-                  Place Bet on {ball.number}
+                  Place Bet on {texts[ ball.number-1]}
                 </Text>
               </Center>
             </Flex>

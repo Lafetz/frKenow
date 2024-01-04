@@ -25,7 +25,7 @@ const GameS = () => {
   return (
     <>
       <Flex color="#103d4d" flexDir="column" alignItems="center" gap="15px">
-        <Heading as="h1" size={["2xl", "xl"]} noOfLines={3}>
+        <Heading as="h1" size={["xl", "xl"]} noOfLines={3}>
           ጨዋታ #{gameStatus?.gameno && <>{Number(gameStatus?.gameno)}</>}
         </Heading>
         <Heading as="h1" size={["xl", "lg"]} noOfLines={1}>
@@ -34,13 +34,13 @@ const GameS = () => {
         {gameStatus && (
           <Flex gap="20px" alignItems="center" justifyContent="space-between">
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              1<sup>st</sup>: {Number(gameStatus?.first)}
+              1: {Number(gameStatus?.first)} ብር
             </Heading>
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              2<sup>2d</sup>: {Number(gameStatus?.second)}
+              2: {Number(gameStatus?.second)} ብር
             </Heading>
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              3<sup>rd</sup>: {Number(gameStatus?.third)}
+              3: {Number(gameStatus?.third)} ብር
             </Heading>
           </Flex>
         )}

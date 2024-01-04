@@ -20,6 +20,7 @@ import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../../Context/socketContext";
 import { AckEvent } from "../../../utils/types/socketEvents";
 import { Report } from "../../../utils/types/data";
+import { texts } from "../../../utils/game/images";
 
 const PastGames = () => {
   const { socket } = useContext(SocketContext);
@@ -67,9 +68,9 @@ const PastGames = () => {
                   <Thead>
                     <Tr>
                       {/* <Th>Date</Th> */}
-                      <Th>game no</Th>
-                      <Th>ball No</Th>
-                      <Th>Amount</Th>
+                      <Th>የጨዋታ ቁጥር</Th>
+                      <Th>ምስል</Th>
+                      <Th>ብር</Th>
                       <Th>username</Th>
                     </Tr>
                   </Thead>
@@ -81,7 +82,7 @@ const PastGames = () => {
                           <Tr key={`${i} ${j}`}>
                             {/* <Td>{new Date(g.timestamp).toDateString()}</Td> */}
                             <Td>{games[i].gameno}</Td>
-                            <Td>{games[i].balls[j]}</Td>
+                            <Td>{texts[games[i].balls[j]-1]}</Td>
                             <Td>
                               {j == 0
                                 ? games[i].first

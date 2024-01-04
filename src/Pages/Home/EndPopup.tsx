@@ -10,13 +10,15 @@ import {
   Center,
   Text,
   Flex,
+  Image,
+  Box,
 } from "@chakra-ui/react";
 import { keyframes } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import ball from "../../assets/ball.png";
 const animationKeyframes = keyframes`
-  0%  {   transform: scale(0.60) rotate(270deg); right:-80px }
-  25%  {  transform: scale(1) rotate(0); right:5px }
+  0%  {   transform: scale(0.60); right:-80px }
+  25%  {  transform: scale(1);  right:5px }
   100%  {   right:5px }
 `;
 
@@ -27,6 +29,7 @@ import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
 import box from "../../assets/box.png";
+import { images, texts } from "../../utils/game/images";
 type Props = {
   setUser: any;
 };
@@ -42,8 +45,9 @@ export const EndPopup = ({ setUser }: Props) => {
   const [first, setFirst] = useState<number | undefined>();
   const [second, setSecond] = useState<number | undefined>();
   const [third, setThird] = useState<number | undefined>();
-  const [number, setNumber] = useState(0);
+  const [number, setNumber] = useState<number>(0);
   useEffect(() => {
+    
     const onGameEnd = async (winningBalls: Ball[]) => {
       onOpen();
       setFirst(undefined);
@@ -62,6 +66,7 @@ export const EndPopup = ({ setUser }: Props) => {
         } else {
           setThird(winningBalls[2].number);
         }
+        setNumber(0)
       }
 
       socket.emit("user", (res: AckEvent) => {
@@ -70,9 +75,14 @@ export const EndPopup = ({ setUser }: Props) => {
         }
       });
     };
+    
+    onGameEnd([{number:1,username:""},{number:4,username:""},{number:22,username:""}]);
     socket.on("game_end", onGameEnd);
 
     return () => {
+      setFirst(undefined);
+      setSecond(undefined);
+      setThird(undefined);
       socket.off("game_end", onGameEnd);
     };
   }, []);
@@ -96,7 +106,7 @@ export const EndPopup = ({ setUser }: Props) => {
               <Flex
                 height="100px"
                 width="250px"
-                backgroundImage={box}
+              
                 backgroundSize="contain"
                 backgroundRepeat="no-repeat"
                 justifyContent="center"
@@ -114,13 +124,18 @@ export const EndPopup = ({ setUser }: Props) => {
                   width="100px"
                   justifyContent="center"
                   alignItems="center"
-                  backgroundImage={ball}
+                 
                   backgroundSize="contain"
                   backgroundRepeat="no-repeat"
                 >
-                  <Text fontSize="4xl" as="b">
-                    <Center>{number}</Center>
-                  </Text>
+               {number!==0&&<Image
+          boxSize="100%"
+          boxShadow='md'
+          borderRadius="md"
+          objectFit="fill"
+          src={images[number-1]}
+          alt="jackpot banner"
+        />}  
                 </Flex>
               </Flex>
             </Center>
@@ -130,15 +145,66 @@ export const EndPopup = ({ setUser }: Props) => {
               justifyContent="center"
               gap="15px"
             >
-              <Text fontSize={["4xl", "3xl"]} as="b">
-                {first ? first : <></>}
-              </Text>
-              <Text fontSize={["4xl", "3xl"]} as="b">
-                {second ? second : <></>}
-              </Text>
-              <Text fontSize={["4xl", "3xl"]} as="b">
-                {third ? third : <></>}
-              </Text>
+              
+                {first ? <Box         w="80px"
+        h="80px"
+        borderRadius="100%"
+        
+        padding="5px"
+        display="flex"
+        justifyContent="center"
+        alignItems="center"
+        flexDir="column"
+        >
+          <Image
+        boxSize="100%"
+        boxShadow='md'
+        borderRadius="md"
+        objectFit="fill"
+        src={images[first-1]}
+        alt="jackpot banner"
+      />  <Text>{texts[first-1]}</Text></Box>: <></>}
+             
+            
+                {second ?<Box         w="80px"
+        h="80px"
+        borderRadius="100%"
+        padding="5px"
+        display="flex"
+        flexDir="column"
+        justifyContent="center"
+        alignItems="center">
+      <Image
+          boxSize="100%"
+          boxShadow='md'
+          borderRadius="md"
+          objectFit="fill"
+          src={images[second-1]}
+          alt="jackpot banner"
+        />
+      <Text>{texts[second-1]}</Text>
+      
+      </Box> : <></>}
+            
+                {third ? <Box         w="80px"
+        h="80px"
+        borderRadius="100%"
+      
+        padding="5px"
+        display="flex"
+        flexDir="column"
+        justifyContent="center"
+        alignItems="center"
+        
+        ><Image
+        boxSize="100%"
+        boxShadow='md'
+        borderRadius="md"
+        objectFit="fill"
+        src={images[third-1]}
+        alt="jackpot banner"
+      /> <Text>{texts[third-1]}</Text></Box> : <></>}
+             
             </Flex>
           </ModalBody>
           <ModalFooter>
