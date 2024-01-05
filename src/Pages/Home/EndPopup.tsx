@@ -76,7 +76,7 @@ export const EndPopup = ({ setUser }: Props) => {
       });
     };
     
-    onGameEnd([{number:1,username:""},{number:4,username:""},{number:22,username:""}]);
+    // onGameEnd([{number:1,username:""},{number:4,username:""},{number:22,username:""}]);
     socket.on("game_end", onGameEnd);
 
     return () => {
