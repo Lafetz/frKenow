@@ -62,7 +62,7 @@ const Header = ({ user }: Props) => {
             fontSize={["sm", "md", "lg", "xl"]}
           >
             <Text height="max-content" as="b">
-              {user.credit}
+              {user.credit} ብር
             </Text>
 
             <Text height="max-content" as="b">

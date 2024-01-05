@@ -62,8 +62,8 @@ export const BallComponent = ({ ball, setUser }: Props) => {
     <>
       <WrapItem
         onClick={onOpen}
-        w="80px"
-        h="80px"
+        w="48px"
+        h="48px"
         borderRadius="100%"
         bg={ball.username == "" ? "#693f62" :  "#fef79d"}
         color="white"
@@ -73,8 +73,8 @@ export const BallComponent = ({ ball, setUser }: Props) => {
         alignItems="center"
       >
              <Image
-                w="70px"
-                h="70px"
+                w="40px"
+                h="40px"
                 borderRadius="100%"
           boxSize="100%"
           boxShadow='md'
