@@ -1,4 +1,4 @@
-import { defer } from "react-router-dom"
+
 import zebra  from "../../assets/animals/zebra.jpg"
 import wolf   from "../../assets/animals/wolf.jpg"
 import tiger  from "../../assets/animals/tiger.jpg"

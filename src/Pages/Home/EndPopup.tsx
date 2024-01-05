@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { keyframes } from "@chakra-ui/react";
 import { motion } from "framer-motion";
-import ball from "../../assets/ball.png";
+
 const animationKeyframes = keyframes`
   0%  {   transform: scale(0.60); right:-80px }
   25%  {  transform: scale(1);  right:5px }
@@ -28,7 +28,7 @@ import { Ball } from "../../utils/types/Game";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
 import { AckEvent } from "../../utils/types/socketEvents";
-import box from "../../assets/box.png";
+
 import { images, texts } from "../../utils/game/images";
 type Props = {
   setUser: any;
