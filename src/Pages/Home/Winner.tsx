@@ -18,7 +18,7 @@ const Winner = ({ reportI, reportsI, reports }: Props) => {
       <Flex
         justifyContent="space-between"
         alignItems="center"
-        gap="15px"
+        gap="7px"
         color="#693f62"
       >
       

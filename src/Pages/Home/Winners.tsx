@@ -28,7 +28,7 @@ const Winners = ({ status }: Props) => {
     });
   }, [status]);
   return (
-    <Flex alignItems="center" flexDir="column" gap="5px">
+    <Flex alignItems="center" flexDir="column" gap="5px" maxW="380px">
       <Flex
         bg="#f9d61a"
         gap="10px"
