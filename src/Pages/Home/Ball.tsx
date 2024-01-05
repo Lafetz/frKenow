@@ -73,9 +73,12 @@ export const BallComponent = ({ ball, setUser }: Props) => {
         alignItems="center"
       >
              <Image
+                w="70px"
+                h="70px"
+                borderRadius="100%"
           boxSize="100%"
           boxShadow='md'
-          borderRadius="md"
+        
           objectFit="fill"
           src={images[ball.number-1]}
           alt="jackpot banner"

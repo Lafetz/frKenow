@@ -29,7 +29,7 @@ const GameS = () => {
           ጨዋታ #{gameStatus?.gameno && <>{Number(gameStatus?.gameno)}</>}
         </Heading>
         <Heading as="h1" size={["xl", "lg"]} noOfLines={1}>
-          BET {gameStatus?.minBet}
+          BET {gameStatus?.minBet} ብር
         </Heading>
         {gameStatus && (
           <Flex gap="20px" alignItems="center" justifyContent="space-between">
