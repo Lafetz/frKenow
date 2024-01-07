@@ -49,8 +49,8 @@ const Winners = ({ status }: Props) => {
         borderRadius="xl"
         paddingY="5px"
       >
-        <Text color="#1e3f2e" fontSize="x-large" as="b" paddingX="10px">
-          ዊነርስ
+        <Text as="b" color="#1e3f2e" fontSize="x-large" paddingX="10px">
+          አሸናፊዎች
         </Text>
         <Image height="40px" src={src} />
       </Flex>
@@ -63,30 +63,22 @@ const Winners = ({ status }: Props) => {
         borderRadius="md"
       >
         {" "}
-        <TableContainer maxW="350px">
+        <TableContainer maxW="400px">
           <Table size={["sm"]} colorScheme="orange">
             <Thead>
               <Tr>
                 <Th>{""}</Th>
-                <Th>
-                  <Text color="#693f62" as="b" fontSize="md" maxW={"20px"}>
-                    የጨዋታ ቁጥር
-                  </Text>
+                <Th style={{ paddingRight: "5px", paddingLeft: "5px" }}>
+                  <Text color="#693f62">የጨዋታ ቁጥር</Text>
                 </Th>
-                <Th>
-                  <Text color="#693f62" as="b" fontSize="md">
-                    ምስል
-                  </Text>
+                <Th style={{ paddingRight: "5px", paddingLeft: "5px" }}>
+                  <Text color="#693f62">የወጣው እንስሳ</Text>
                 </Th>
-                <Th>
-                  <Text color="#693f62" as="b" fontSize="md">
-                    ብር
-                  </Text>
+                <Th style={{ paddingRight: "5px", paddingLeft: "5px" }}>
+                  <Text color="#693f62">የኣሸናፊው መለያ</Text>
                 </Th>
-                <Th>
-                  <Text color="#693f62" as="b" fontSize="md">
-                    ብር
-                  </Text>
+                <Th style={{ paddingRight: "5px", paddingLeft: "5px" }}>
+                  <Text color="#693f62">የብር መጠን</Text>
                 </Th>
               </Tr>
             </Thead>
