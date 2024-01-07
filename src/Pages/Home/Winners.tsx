@@ -63,7 +63,7 @@ const Winners = ({ status }: Props) => {
         borderRadius="md"
       >
         {" "}
-        <TableContainer>
+        <TableContainer maxW="350px">
           <Table size={["sm"]} colorScheme="orange">
             <Thead>
               <Tr>
