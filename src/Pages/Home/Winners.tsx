@@ -1,4 +1,15 @@
-import { Flex, Image, Text, useToast } from "@chakra-ui/react";
+import {
+  Flex,
+  Image,
+  Table,
+  TableContainer,
+  Tbody,
+  Text,
+  Th,
+  Thead,
+  Tr,
+  useToast,
+} from "@chakra-ui/react";
 import Winner from "./Winner";
 import { useContext, useEffect, useState } from "react";
 import { SocketContext } from "../Context/socketContext";
@@ -28,7 +39,7 @@ const Winners = ({ status }: Props) => {
     });
   }, [status]);
   return (
-    <Flex alignItems="center" flexDir="column" gap="5px" maxW="380px">
+    <Flex alignItems="center" flexDir="column" gap="5px">
       <Flex
         bg="#f9d61a"
         gap="10px"
@@ -51,19 +62,51 @@ const Winners = ({ status }: Props) => {
         minW="250px"
         borderRadius="md"
       >
-        {winners?.map((x, i) =>
-          //@ts-ignore
-          x.winners.map((r, k) => {
-            return (
-              <Winner
-                key={`${i}${k}`}
-                reports={winners}
-                reportsI={i}
-                reportI={k}
-              />
-            );
-          })
-        )}
+        {" "}
+        <TableContainer>
+          <Table size={["sm"]} colorScheme="orange">
+            <Thead>
+              <Tr>
+                <Th>{""}</Th>
+                <Th>
+                  <Text color="#693f62" as="b" fontSize="md" maxW={"20px"}>
+                    የጨዋታ ቁጥር
+                  </Text>
+                </Th>
+                <Th>
+                  <Text color="#693f62" as="b" fontSize="md">
+                    ምስል
+                  </Text>
+                </Th>
+                <Th>
+                  <Text color="#693f62" as="b" fontSize="md">
+                    ብር
+                  </Text>
+                </Th>
+                <Th>
+                  <Text color="#693f62" as="b" fontSize="md">
+                    ብር
+                  </Text>
+                </Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {winners?.map((x, i) =>
+                //@ts-ignore
+                x.winners.map((r, k) => {
+                  return (
+                    <Winner
+                      key={`${i}${k}`}
+                      reports={winners}
+                      reportsI={i}
+                      reportI={k}
+                    />
+                  );
+                })
+              )}
+            </Tbody>
+          </Table>
+        </TableContainer>
       </Flex>
     </Flex>
   );

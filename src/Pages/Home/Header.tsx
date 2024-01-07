@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Flex,
   Text,
   Image,
@@ -12,13 +11,14 @@ import {
   MenuItem,
 } from "@chakra-ui/react";
 import logo from "../../assets/logo.png";
-import src from "../../assets/5.jpg";
+
 import Withdraw from "./buttons/withdraw";
 import Deposit from "./buttons/deposit";
 import { HamburgerIcon } from "@chakra-ui/icons";
 import { Link } from "react-router-dom";
 import Signout from "./buttons/signout";
 import PastGames from "./buttons/pastgames";
+import HowToPlay from "./buttons/how";
 type Props = {
   user: any;
 };
@@ -70,7 +70,8 @@ const Header = ({ user }: Props) => {
             </Text>
           </Flex>
         )}
-        <Avatar size={["sm", "md"]} name="Kola Tioluwani" src={src} />
+        <HowToPlay />
+        {/* <Avatar size={["sm", "md"]} name="how to play" src={src} /> */}
         <Menu>
           <MenuButton
             as={IconButton}

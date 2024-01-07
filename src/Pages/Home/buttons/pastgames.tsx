@@ -70,8 +70,9 @@ const PastGames = () => {
                       {/* <Th>Date</Th> */}
                       <Th>የጨዋታ ቁጥር</Th>
                       <Th>ምስል</Th>
-                      <Th>ብር</Th>
                       <Th>username</Th>
+                      <Th>ብር</Th>
+                     
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -81,7 +82,7 @@ const PastGames = () => {
                         return (
                           <Tr key={`${i} ${j}`}>
                             {/* <Td>{new Date(g.timestamp).toDateString()}</Td> */}
-                            <Td>{games[i].gameno}</Td>
+                            <Td >{games[i].gameno}</Td>
                             <Td>{texts[games[i].balls[j]-1]}</Td>
                             <Td>
                               {j == 0
@@ -95,17 +96,7 @@ const PastGames = () => {
                           </Tr>
                         );
                       });
-                      // g.winners.map((u) => {
-                      //     return (
-                      //         <Tr>
-                      //           {/* <Td>{new Date(g.timestamp).toDateString()}</Td> */}
-                      //           <Td>{"dd"} ETB</Td>
-                      //           <Td> </Td>
-                      //           <Td> </Td>
-                      //           <Td> </Td>
-                      //         </Tr>
-                      //       );
-                      //     });
+
                     })}
                   </Tbody>
                 </Table>
@@ -113,7 +104,10 @@ const PastGames = () => {
             )}
           </ModalBody>
           {/* 
-          <ModalFooter justifyContent="center">
+          <ModalFooter justifyContent="center"> {
+  padding-left: 4px;
+  padding-right: 4px;
+}
             <Button colorScheme="red" mr={3} onClick={onClose}>
               Cancel
             </Button>

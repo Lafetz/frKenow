@@ -10,7 +10,8 @@ import {
   ModalOverlay,
   WrapItem,
   useDisclosure,
-  useToast,Image
+  useToast,
+  Image,
 } from "@chakra-ui/react";
 import { Ball } from "../../utils/types/Game";
 import { SocketContext } from "../Context/socketContext";
@@ -31,15 +32,15 @@ export const BallComponent = ({ ball, setUser }: Props) => {
       if (res.code == 200) {
         setUser(res.payload);
         toast({
-          title: "Success",
-          description: `you have placed bet on ${texts[ball.number-1]}`,
+          title: "ስኬት",
+          description: `በ${texts[ball.number - 1]} ላይ መቁረጫ አስቀምጣችኋል`,
           status: "success",
           duration: 4000,
           isClosable: true,
         });
       } else if (res.code == 400) {
         toast({
-          title: "Error",
+          title: "ስህተት",
           description: res.description,
           status: "error",
           duration: 4000,
@@ -65,22 +66,21 @@ export const BallComponent = ({ ball, setUser }: Props) => {
         w="48px"
         h="48px"
         borderRadius="100%"
-        bg={ball.username == "" ? "#693f62" :  "#fef79d"}
+        bg={ball.username == "" ? "#693f62" : "#fef79d"}
         color="white"
         padding="5px"
         display="flex"
         justifyContent="center"
         alignItems="center"
       >
-             <Image
-                w="40px"
-                h="40px"
-                borderRadius="100%"
+        <Image
+          w="40px"
+          h="40px"
+          borderRadius="100%"
           boxSize="100%"
-          boxShadow='md'
-        
+          boxShadow="md"
           objectFit="fill"
-          src={images[ball.number-1]}
+          src={images[ball.number - 1]}
           alt="jackpot banner"
         />
       </WrapItem>
@@ -91,7 +91,7 @@ export const BallComponent = ({ ball, setUser }: Props) => {
             <Flex flexDir="column" gap="15px">
               <Center>
                 <Text fontSize="xl" as="b">
-                  Place Bet on {texts[ ball.number-1]}
+                  Place Bet on {texts[ball.number - 1]}
                 </Text>
               </Center>
             </Flex>

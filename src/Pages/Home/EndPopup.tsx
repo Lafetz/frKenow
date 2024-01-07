@@ -45,9 +45,8 @@ export const EndPopup = ({ setUser }: Props) => {
   const [first, setFirst] = useState<number | undefined>();
   const [second, setSecond] = useState<number | undefined>();
   const [third, setThird] = useState<number | undefined>();
-  const [number, setNumber] = useState<number>(0);
+  const [number, setNumber] = useState<number>(-1);
   useEffect(() => {
-    
     const onGameEnd = async (winningBalls: Ball[]) => {
       onOpen();
       setFirst(undefined);
@@ -66,7 +65,7 @@ export const EndPopup = ({ setUser }: Props) => {
         } else {
           setThird(winningBalls[2].number);
         }
-        setNumber(0)
+        setNumber(0);
       }
 
       socket.emit("user", (res: AckEvent) => {
@@ -75,8 +74,12 @@ export const EndPopup = ({ setUser }: Props) => {
         }
       });
     };
-    
-    // onGameEnd([{number:1,username:""},{number:4,username:""},{number:22,username:""}]);
+
+    // onGameEnd([
+    //   { number: 1, username: "" },
+    //   { number: 4, username: "" },
+    //   { number: 22, username: "" },
+    // ]);
     socket.on("game_end", onGameEnd);
 
     return () => {
@@ -99,45 +102,47 @@ export const EndPopup = ({ setUser }: Props) => {
         />
         <ModalContent>
           <Center>
-            <ModalHeader>Game Ended</ModalHeader>
+            <ModalHeader>ጨዋታው ተጠናቆአል</ModalHeader>
           </Center>
           <ModalBody>
             <Center>
-              <Flex
-                height="100px"
-                width="250px"
-              
-                backgroundSize="contain"
-                backgroundRepeat="no-repeat"
-                justifyContent="center"
-                alignItems="center"
-              >
+              {number !== 0 && (
                 <Flex
-                  onAnimationIteration={() => {}}
-                  marginRight="-5px"
-                  as={motion.div}
-                  animation={animation}
-                  position="relative"
-                  right="5px"
-                  borderRadius="100%"
                   height="100px"
-                  width="100px"
-                  justifyContent="center"
-                  alignItems="center"
-                 
+                  width="250px"
                   backgroundSize="contain"
                   backgroundRepeat="no-repeat"
+                  justifyContent="center"
+                  alignItems="center"
                 >
-               {number!==0&&<Image
-          boxSize="100%"
-          boxShadow='md'
-          borderRadius="md"
-          objectFit="fill"
-          src={images[number-1]}
-          alt="jackpot banner"
-        />}  
+                  <Flex
+                    onAnimationIteration={() => {}}
+                    marginRight="-5px"
+                    as={motion.div}
+                    animation={animation}
+                    position="relative"
+                    right="5px"
+                    borderRadius="100%"
+                    height="100px"
+                    width="100px"
+                    justifyContent="center"
+                    alignItems="center"
+                    backgroundSize="contain"
+                    backgroundRepeat="no-repeat"
+                  >
+                    {number !== 0 && (
+                      <Image
+                        boxSize="100%"
+                        boxShadow="md"
+                        borderRadius="md"
+                        objectFit="fill"
+                        src={images[number - 1]}
+                        alt="jackpot banner"
+                      />
+                    )}
+                  </Flex>
                 </Flex>
-              </Flex>
+              )}
             </Center>
             <Flex
               color="#103d4d"
@@ -145,66 +150,80 @@ export const EndPopup = ({ setUser }: Props) => {
               justifyContent="center"
               gap="15px"
             >
-              
-                {first ? <Box         w="80px"
-        h="80px"
-        borderRadius="100%"
-        
-        padding="5px"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        flexDir="column"
-        >
-          <Image
-        boxSize="100%"
-        boxShadow='md'
-        borderRadius="md"
-        objectFit="fill"
-        src={images[first-1]}
-        alt="jackpot banner"
-      />  <Text>{texts[first-1]}</Text></Box>: <></>}
-             
-            
-                {second ?<Box         w="80px"
-        h="80px"
-        borderRadius="100%"
-        padding="5px"
-        display="flex"
-        flexDir="column"
-        justifyContent="center"
-        alignItems="center">
-      <Image
-          boxSize="100%"
-          boxShadow='md'
-          borderRadius="md"
-          objectFit="fill"
-          src={images[second-1]}
-          alt="jackpot banner"
-        />
-      <Text>{texts[second-1]}</Text>
-      
-      </Box> : <></>}
-            
-                {third ? <Box         w="80px"
-        h="80px"
-        borderRadius="100%"
-      
-        padding="5px"
-        display="flex"
-        flexDir="column"
-        justifyContent="center"
-        alignItems="center"
-        
-        ><Image
-        boxSize="100%"
-        boxShadow='md'
-        borderRadius="md"
-        objectFit="fill"
-        src={images[third-1]}
-        alt="jackpot banner"
-      /> <Text>{texts[third-1]}</Text></Box> : <></>}
-             
+              {first ? (
+                <Box
+                  w="80px"
+                  h="80px"
+                  borderRadius="100%"
+                  padding="5px"
+                  display="flex"
+                  justifyContent="center"
+                  alignItems="center"
+                  flexDir="column"
+                >
+                  <Image
+                    boxSize="100%"
+                    boxShadow="md"
+                    borderRadius="md"
+                    objectFit="fill"
+                    src={images[first - 1]}
+                    alt="jackpot banner"
+                  />{" "}
+                  <Text>{texts[first - 1]}</Text>
+                </Box>
+              ) : (
+                <></>
+              )}
+
+              {second ? (
+                <Box
+                  w="80px"
+                  h="80px"
+                  borderRadius="100%"
+                  padding="5px"
+                  display="flex"
+                  flexDir="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Image
+                    boxSize="100%"
+                    boxShadow="md"
+                    borderRadius="md"
+                    objectFit="fill"
+                    src={images[second - 1]}
+                    alt="jackpot banner"
+                  />
+                  <Text>{texts[second - 1]}</Text>
+                </Box>
+              ) : (
+                <></>
+              )}
+
+              {third ? (
+                <Box
+                  w="80px"
+                  h="80px"
+                  borderRadius="100%"
+                  padding="5px"
+                  display="flex"
+                  flexDir="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Image
+                    boxSize="100%"
+                    boxShadow="md"
+                    borderRadius="md"
+                    objectFit="fill"
+                    src={images[third - 1]}
+                    alt="jackpot banner"
+                  />{" "}
+                  <Text>{texts[third - 1]}</Text>
+                </Box>
+              ) : (
+                <></>
+              )}
             </Flex>
           </ModalBody>
           <ModalFooter>
