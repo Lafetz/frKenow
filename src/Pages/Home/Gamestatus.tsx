@@ -34,13 +34,13 @@ const GameS = () => {
         {gameStatus && (
           <Flex gap="20px" alignItems="center" justifyContent="space-between">
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              1: {Number(gameStatus?.first)} ብር
+              1ኛ: {Number(gameStatus?.first)} ብር
             </Heading>
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              2: {Number(gameStatus?.second)} ብር
+              2ኛ: {Number(gameStatus?.second)} ብር
             </Heading>
             <Heading as="h2" size={["sm"]} noOfLines={1}>
-              3: {Number(gameStatus?.third)} ብር
+              3ኛ: {Number(gameStatus?.third)} ብር
             </Heading>
           </Flex>
         )}

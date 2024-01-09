@@ -2,6 +2,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Image,
   MenuItem,
   Modal,
   ModalBody,
@@ -22,7 +23,7 @@ import { SocketContext } from "../../Context/socketContext";
 import { AckEvent } from "../../../utils/types/socketEvents";
 import { useNavigate } from "react-router-dom";
 import { Bank } from "../../../utils/types/data";
-
+import src from "../../../assets/icons/ma.jpg";
 const Withdraw = () => {
   const navigate = useNavigate();
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -93,7 +94,11 @@ const Withdraw = () => {
   }, []);
   return (
     <>
-      <MenuItem onClick={onOpen}>ወጪ</MenuItem>
+      <MenuItem onClick={onOpen}>
+        {" "}
+        <Image src={src} height="25px" width="25px" marginRight="5px" />
+        ወጪ
+      </MenuItem>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

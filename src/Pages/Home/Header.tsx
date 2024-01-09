@@ -19,6 +19,7 @@ import { Link } from "react-router-dom";
 import Signout from "./buttons/signout";
 import PastGames from "./buttons/pastgames";
 import HowToPlay from "./buttons/how";
+import src from "../../assets/icons/hand.jpg";
 type Props = {
   user: any;
 };
@@ -84,7 +85,17 @@ const Header = ({ user }: Props) => {
             <Withdraw />
             <PastGames />
             <MenuItem>
-              <Link to="/transactions">የገንዘብ ዝውውር ታሪክ</Link>
+              <Link to="/transactions">
+                <Flex>
+                  <Image
+                    src={src}
+                    height="25px"
+                    width="25px"
+                    marginRight="5px"
+                  />
+                  የገንዘብ ዝውውር ታሪክ
+                </Flex>
+              </Link>
             </MenuItem>
             <Signout />
           </MenuList>

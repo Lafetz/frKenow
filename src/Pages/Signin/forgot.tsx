@@ -97,7 +97,7 @@ const ForgotPass = ({ isOpen, onClose }: Props) => {
     };
     setLoading(true);
     try {
-      const res = await fetch("https://daclan.onrender.com/update", {
+      const res = await fetch("http://localhost:8080/update", {
         method: "POST",
         headers: {
           Accept: "application/json",

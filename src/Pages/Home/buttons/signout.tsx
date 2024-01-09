@@ -1,5 +1,6 @@
 import {
   Button,
+  Image,
   MenuItem,
   Modal,
   ModalContent,
@@ -9,7 +10,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-
+import src from "../../../assets/icons/out.jpg";
 const Signout = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate();
@@ -19,7 +20,11 @@ const Signout = () => {
   };
   return (
     <>
-      <MenuItem onClick={onOpen}>ለመውጣት</MenuItem>
+      <MenuItem onClick={onOpen}>
+        {" "}
+        <Image src={src} height="25px" width="25px" marginRight="5px" />
+        ለመውጣት
+      </MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

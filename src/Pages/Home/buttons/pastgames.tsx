@@ -1,5 +1,6 @@
 import {
   Button,
+  Image,
   MenuItem,
   Modal,
   ModalBody,
@@ -21,7 +22,7 @@ import { SocketContext } from "../../Context/socketContext";
 import { AckEvent } from "../../../utils/types/socketEvents";
 import { Report } from "../../../utils/types/data";
 import { texts } from "../../../utils/game/images";
-
+import src from "../../../assets/icons/bio.jpg";
 const PastGames = () => {
   const { socket } = useContext(SocketContext);
   const [games, setGames] = useState<any>([]);
@@ -55,7 +56,11 @@ const PastGames = () => {
 
   return (
     <>
-      <MenuItem onClick={onOpen}>ያለፉ ጨዋታዎች</MenuItem>
+      <MenuItem onClick={onOpen}>
+        {" "}
+        <Image src={src} height="25px" width="25px" marginRight="5px" />
+        ያለፉ ጨዋታዎች
+      </MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
@@ -72,7 +77,6 @@ const PastGames = () => {
                       <Th>ምስል</Th>
                       <Th>username</Th>
                       <Th>ብር</Th>
-                     
                     </Tr>
                   </Thead>
                   <Tbody>
@@ -82,8 +86,8 @@ const PastGames = () => {
                         return (
                           <Tr key={`${i} ${j}`}>
                             {/* <Td>{new Date(g.timestamp).toDateString()}</Td> */}
-                            <Td >{games[i].gameno}</Td>
-                            <Td>{texts[games[i].balls[j]-1]}</Td>
+                            <Td>{games[i].gameno}</Td>
+                            <Td>{texts[games[i].balls[j] - 1]}</Td>
                             <Td>
                               {j == 0
                                 ? games[i].first
@@ -96,7 +100,6 @@ const PastGames = () => {
                           </Tr>
                         );
                       });
-
                     })}
                   </Tbody>
                 </Table>

@@ -2,6 +2,7 @@ import {
   Button,
   FormControl,
   FormLabel,
+  Image,
   MenuItem,
   Modal,
   ModalBody,
@@ -19,7 +20,7 @@ import {
 import { useContext, useState } from "react";
 import { SocketContext } from "../../Context/socketContext";
 import { AckEvent } from "../../../utils/types/socketEvents";
-
+import src from "../../../assets/icons/depo.jpg";
 const Deposit = () => {
   const [amount, setAmount] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -66,7 +67,10 @@ const Deposit = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <>
-      <MenuItem onClick={onOpen}>ተቀማጭ</MenuItem>
+      <MenuItem onClick={onOpen}>
+        <Image src={src} height="25px" width="25px" marginRight="5px" />
+        ተቀማጭ
+      </MenuItem>
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>
